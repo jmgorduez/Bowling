@@ -1,6 +1,5 @@
 package ec.com.jmgorduez.Bowling.domain;
 
-import ec.com.jmgorduez.Bowling.domain.NormalFrame;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -42,7 +41,7 @@ class NormalFrameTest {
 
     @Test
     void getNextFrame() {
-        assertThat(normalFrameUnderTest.getNextFrame())
+        assertThat(normalFrameUnderTest.nextFrame())
                 .isEqualTo(NORMAL_FRAME_4_5);
     }
 }

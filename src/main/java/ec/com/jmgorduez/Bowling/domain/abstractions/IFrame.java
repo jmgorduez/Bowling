@@ -5,5 +5,5 @@ public interface IFrame {
     Integer getPointsSecondBall();
     Integer getBonusForStrike();
     Integer getBonusForSpare();
-    IFrame getNextFrame();
+    IFrame nextFrame();
 }

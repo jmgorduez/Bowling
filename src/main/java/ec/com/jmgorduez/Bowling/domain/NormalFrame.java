@@ -32,7 +32,7 @@ public class NormalFrame implements IFrame {
     }
 
     @Override
-    public IFrame getNextFrame() {
+    public IFrame nextFrame() {
         return null;
     }
 }
