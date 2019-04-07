@@ -40,6 +40,6 @@ public class NormalFrame implements IFrame {
 
     @Override
     public Integer getPoints() {
-        return null;
+        return this.pointsFirstBall + this.pointsSecondBall;
     }
 }
