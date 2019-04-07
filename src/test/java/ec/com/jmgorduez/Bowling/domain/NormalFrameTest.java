@@ -37,7 +37,8 @@ class NormalFrameTest {
 
     @Test
     void getBonusForSpare() {
-
+        assertThat(normalFrameUnderTest.getBonusForSpare())
+                .isEqualTo(THREE);
     }
 
     @Test
