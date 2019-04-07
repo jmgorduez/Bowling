@@ -4,8 +4,7 @@ import ec.com.jmgorduez.Bowling.domain.NormalFrame;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static ec.com.jmgorduez.Bowling.dataGenarator.TestDataGenerator.FIVE;
-import static ec.com.jmgorduez.Bowling.dataGenarator.TestDataGenerator.THREE;
+import static ec.com.jmgorduez.Bowling.dataGenarator.TestDataGenerator.*;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -43,5 +42,7 @@ class NormalFrameTest {
 
     @Test
     void getNextFrame() {
+        assertThat(normalFrameUnderTest.getNextFrame())
+                .isEqualTo(NORMAL_FRAME_4_5);
     }
 }
