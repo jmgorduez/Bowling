@@ -37,6 +37,7 @@ class NormalFrameTest {
 
     @Test
     void getBonusForSpare() {
+
     }
 
     @Test
