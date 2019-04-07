@@ -12,7 +12,7 @@ class NormalFrameTest {
 
     @BeforeEach
     void setUp() {
-        this.normalFrameUnderTest = new NormalFrame();
+        this.normalFrameUnderTest = new NormalFrame(THREE);
     }
 
     @Test
