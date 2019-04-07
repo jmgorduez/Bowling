@@ -42,4 +42,12 @@ public class NormalFrame implements IFrame {
     public Integer getPoints() {
         return this.pointsFirstBall + this.pointsSecondBall;
     }
+
+    @Override
+    public boolean equals(Object other){
+        if (this == other){
+            return true;
+        }
+        return false;
+    }
 }
