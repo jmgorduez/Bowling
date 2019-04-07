@@ -6,4 +6,5 @@ public interface IFrame {
     Integer getBonusForStrike();
     Integer getBonusForSpare();
     IFrame nextFrame();
+    Integer getPoints();
 }

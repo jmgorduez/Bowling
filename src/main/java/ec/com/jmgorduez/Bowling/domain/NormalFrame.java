@@ -37,4 +37,9 @@ public class NormalFrame implements IFrame {
     public IFrame nextFrame() {
         return this.nextFrame;
     }
+
+    @Override
+    public Integer getPoints() {
+        return null;
+    }
 }

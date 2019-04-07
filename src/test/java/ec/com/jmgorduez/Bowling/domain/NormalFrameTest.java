@@ -44,4 +44,10 @@ class NormalFrameTest {
         assertThat(normalFrameUnderTest.nextFrame())
                 .isEqualTo(NORMAL_FRAME_4_5);
     }
+
+    @Test
+    void getPoints(){
+        assertThat(normalFrameUnderTest.getPoints())
+                .isEqualTo(THREE + FIVE);
+    }
 }
