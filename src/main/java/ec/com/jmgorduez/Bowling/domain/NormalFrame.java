@@ -28,7 +28,7 @@ public class NormalFrame implements IFrame {
 
     @Override
     public Integer getBonusForSpare() {
-        return null;
+        return pointsFirstBall;
     }
 
     @Override
