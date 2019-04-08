@@ -35,7 +35,7 @@ public class StrikeFrame implements IFrame {
 
     @Override
     public IFrame nextFrame() {
-        return null;
+        return this.nextFrame;
     }
 
     @Override
