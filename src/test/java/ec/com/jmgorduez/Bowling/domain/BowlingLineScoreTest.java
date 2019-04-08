@@ -22,16 +22,24 @@ class BowlingLineScoreTest {
 
     @Test
     void getTotalScore() {
+        addFrames(generateFramesList12Strikes());
         assertThat(bowlingLineScoreUnderTest.getTotalScore())
                 .isEqualTo(THREE_HUNDRED);
         bowlingLineScoreUnderTest
                 = new BowlingLineScore();
+        addFrames(generateFramesList10PairsOf9AndMiss());
         assertThat(bowlingLineScoreUnderTest.getTotalScore())
                 .isEqualTo(NINETY);
         bowlingLineScoreUnderTest
                 = new BowlingLineScore();
+        addFrames(generateFramesList10PairsOf5AndSpareWithAFinal5());
         assertThat(bowlingLineScoreUnderTest.getTotalScore())
                 .isEqualTo(ONE_HUNDRED_FIFTY);
+    }
+
+    private void addFrames(List<IFrame> frameList){
+        frameList.stream()
+                .forEach(frame -> bowlingLineScoreUnderTest.addFrame(frame));
     }
 
     @Test
