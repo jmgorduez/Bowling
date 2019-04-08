@@ -13,13 +13,13 @@ class SpareFrameTest {
 
     @BeforeEach
     void setUp() {
-        this.spareFrameUnderTest = new SpareFrame(FIVE, THREE, NORMAL_FRAME_4_5);
+        this.spareFrameUnderTest = new SpareFrame(SEVEN, THREE, NORMAL_FRAME_4_5);
     }
 
     @Test
     void pointsFirstBall() {
         assertThat(spareFrameUnderTest.pointsFirstBall())
-                .isEqualTo(FIVE);
+                .isEqualTo(SEVEN);
     }
 
     @Test
@@ -31,13 +31,13 @@ class SpareFrameTest {
     @Test
     void bonusForStrike() {
         assertThat(spareFrameUnderTest.bonusForStrike())
-                .isEqualTo(FIVE + THREE);
+                .isEqualTo(SEVEN + THREE);
     }
 
     @Test
     void bonusForSpare() {
         assertThat(spareFrameUnderTest.bonusForSpare())
-                .isEqualTo(FIVE);
+                .isEqualTo(SEVEN);
     }
 
     @Test
