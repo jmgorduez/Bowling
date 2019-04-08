@@ -1,8 +1,10 @@
 package ec.com.jmgorduez.Bowling.domain;
 
+import ec.com.jmgorduez.Bowling.dataGenarator.TestDataGenerator;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import static ec.com.jmgorduez.Bowling.dataGenarator.TestDataGenerator.NORMAL_FRAME_4_5;
 import static ec.com.jmgorduez.Bowling.utils.Constants.FIVE;
 import static ec.com.jmgorduez.Bowling.utils.Constants.THREE;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -12,7 +14,7 @@ class SpareFrameTest {
 
     @BeforeEach
     void setUp() {
-        this.spareFrameUnderTest = new SpareFrame(FIVE, THREE);
+        this.spareFrameUnderTest = new SpareFrame(FIVE, THREE, NORMAL_FRAME_4_5);
     }
 
     @Test

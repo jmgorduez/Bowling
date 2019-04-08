@@ -1,24 +1,12 @@
 package ec.com.jmgorduez.Bowling.domain;
 
+import ec.com.jmgorduez.Bowling.domain.abstractions.AbstractFrame;
 import ec.com.jmgorduez.Bowling.domain.abstractions.IFrame;
 
-public class SpareFrame implements IFrame {
-    private Integer pointsFirstBall;
-    private Integer pointsSecondBall;
+public class SpareFrame extends AbstractFrame {
 
-    public SpareFrame(Integer pointsFirstBall, Integer pointsSecondBall){
-        this.pointsFirstBall = pointsFirstBall;
-        this.pointsSecondBall = pointsSecondBall;
-    }
-
-    @Override
-    public Integer pointsFirstBall() {
-        return pointsFirstBall;
-    }
-
-    @Override
-    public Integer pointsSecondBall() {
-        return pointsSecondBall;
+    public SpareFrame(Integer pointsFirstBall, Integer pointsSecondBall, IFrame nextFrame){
+        super(pointsFirstBall, pointsSecondBall, nextFrame);
     }
 
     @Override
@@ -28,11 +16,6 @@ public class SpareFrame implements IFrame {
 
     @Override
     public Integer bonusForSpare() {
-        return null;
-    }
-
-    @Override
-    public IFrame nextFrame() {
         return null;
     }
 
