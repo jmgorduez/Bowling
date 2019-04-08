@@ -36,6 +36,10 @@ class BowlingLineScoreTest {
 
     @Test
     void addFrame(){
-      
+        List<IFrame> frameListExpected = new ArrayList<>();
+        frameListExpected.add(NORMAL_FRAME_4_5);
+        bowlingLineScoreUnderTest.addFrame(NORMAL_FRAME_4_5);
+        assertThat(bowlingLineScoreUnderTest.frameList)
+                .isEqualTo(frameListExpected);
     }
 }
