@@ -1,9 +1,10 @@
 package ec.com.jmgorduez.Bowling.domain;
 
-import org.assertj.core.api.Assertions;
+import ec.com.jmgorduez.Bowling.dataGenarator.TestDataGenerator;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import static ec.com.jmgorduez.Bowling.dataGenarator.TestDataGenerator.NORMAL_FRAME_4_5;
 import static ec.com.jmgorduez.Bowling.utils.Constants.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -13,7 +14,7 @@ class StrikeFrameTest {
 
     @BeforeEach
     void setUp() {
-        this.strikeFrameUnderTest = new StrikeFrame();
+        this.strikeFrameUnderTest = new StrikeFrame(NORMAL_FRAME_4_5);
     }
 
     @Test
@@ -39,7 +40,7 @@ class StrikeFrameTest {
     @Test
     void getBonusForSpare() {
         assertThat(strikeFrameUnderTest.getBonusForSpare())
-                .isEqualTo(NINE);
+                .isEqualTo(FOUR);
     }
 
     @Test

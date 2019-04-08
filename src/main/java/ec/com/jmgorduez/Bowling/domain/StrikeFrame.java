@@ -7,8 +7,10 @@ import static ec.com.jmgorduez.Bowling.utils.Constants.ZERO;
 
 public class StrikeFrame implements IFrame {
 
-    public StrikeFrame(){
+    private IFrame nextFrame;
 
+    public StrikeFrame(IFrame nextFrame) {
+        this.nextFrame = nextFrame;
     }
 
     @Override
@@ -28,7 +30,7 @@ public class StrikeFrame implements IFrame {
 
     @Override
     public Integer getBonusForSpare() {
-        return null;
+        return nextFrame.getPointsFirstBall();
     }
 
     @Override
