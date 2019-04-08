@@ -4,5 +4,5 @@ import java.io.BufferedReader;
 import java.io.IOException;
 
 public interface IBowlingLineScoreReader {
-    IBowlingLineScore readScoreBowlingGame(BufferedReader bufferedReader) throws IOException;
+    IBowlingLineScore readBowlingLineScore(BufferedReader bufferedReader) throws IOException;
 }

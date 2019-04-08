@@ -16,7 +16,7 @@ import static ec.com.jmgorduez.Bowling.utils.Constants.*;
 
 public class BowlingLineScoreReader implements IBowlingLineScoreReader {
     @Override
-    public IBowlingLineScore readScoreBowlingGame(BufferedReader bufferedReader)
+    public IBowlingLineScore readBowlingLineScore(BufferedReader bufferedReader)
             throws IOException {
         String line = bufferedReader.readLine();
         String[] framesString = line.split(BLANK_SPACE_STRING);

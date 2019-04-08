@@ -1,7 +1,5 @@
 package ec.com.jmgorduez.Bowling.domain;
 
-import ec.com.jmgorduez.Bowling.dataGenarator.TestDataGenerator;
-import javafx.beans.binding.Bindings;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
@@ -14,7 +12,6 @@ import java.io.IOException;
 import static ec.com.jmgorduez.Bowling.dataGenarator.TestDataGenerator.STRING_LINE_12_STRIKES;
 import static ec.com.jmgorduez.Bowling.dataGenarator.TestDataGenerator.generateFramesList12Strikes;
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
 
 @TestInstance(value = TestInstance.Lifecycle.PER_CLASS)
@@ -39,7 +36,7 @@ class BowlingLineScoreReaderTest {
     @Test
     void readScoreBowlingGame() {
         try {
-            assertThat(bowlingLineScoreReaderUnderTest.readScoreBowlingGame(bufferedReaderMock))
+            assertThat(bowlingLineScoreReaderUnderTest.readBowlingLineScore(bufferedReaderMock))
                     .isEqualTo(generateFramesList12Strikes());
         } catch (IOException e) {
             e.printStackTrace();

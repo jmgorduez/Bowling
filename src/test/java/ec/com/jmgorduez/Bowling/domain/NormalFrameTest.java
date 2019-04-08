@@ -43,7 +43,7 @@ class NormalFrameTest {
 
     @Test
     void getNextFrame() {
-        assertThat(normalFrameUnderTest.nextFrame())
+        assertThat(normalFrameUnderTest.nextFrame().get())
                 .isEqualTo(NORMAL_FRAME_4_5);
     }
 
