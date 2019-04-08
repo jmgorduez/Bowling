@@ -1,5 +1,7 @@
 package ec.com.jmgorduez.Bowling.domain.abstractions;
 
+import java.util.Optional;
+
 public interface IFrame {
     Integer pointsFirstBall();
 
@@ -9,9 +11,7 @@ public interface IFrame {
 
     Integer bonusForSpare();
 
-    IFrame nextFrame();
-
-    void setNextFrame(IFrame nextFrame);
+    Optional<IFrame> nextFrame();
 
     Integer totalPoints();
 

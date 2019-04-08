@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.function.Supplier;
 
 import static ec.com.jmgorduez.Bowling.utils.Constants.*;
 
@@ -22,8 +23,8 @@ public class BowlingLineScoreReader implements IBowlingLineScoreReader {
         List<IFrame> frameList = new ArrayList<>();
         frameList.add(stringToFinalStrikeFrame());
         int count = NINE;
-        do {
-        } while (frameList.size() != TEN);
+        /*do {
+        } while (frameList.size() != TEN);*/
         IBowlingLineScore bowlingLineScore = new BowlingLineScore();
         return bowlingLineScore;
     }
@@ -32,7 +33,7 @@ public class BowlingLineScoreReader implements IBowlingLineScoreReader {
         return new FinalFrame(TEN, TEN, TEN);
     }
 
-    IFrame stringToFrame(String frameString, IFrame nextFrame) {
+    IFrame stringToFrame(String frameString, Supplier<IFrame> nextFrame) {
         switch (frameString) {
             case STRIKE_FRAME_STRING:
                 return new StrikeFrame(nextFrame);

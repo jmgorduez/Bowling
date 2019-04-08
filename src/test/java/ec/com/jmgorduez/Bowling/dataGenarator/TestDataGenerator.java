@@ -8,6 +8,7 @@ import ec.com.jmgorduez.Bowling.domain.abstractions.IFrame;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Supplier;
 import java.util.stream.Stream;
 
 import static ec.com.jmgorduez.Bowling.utils.Constants.*;
@@ -28,7 +29,7 @@ public class TestDataGenerator {
         FinalFrame finalFrame = new FinalFrame(TEN, TEN, TEN);
         frameList.add(finalFrame);
         for (int i = 0; i < 9; i++) {
-            StrikeFrame strikeFrame = new StrikeFrame(finalFrame);
+            StrikeFrame strikeFrame = new StrikeFrame(() -> frameList.get(ZERO));
             frameList.add(ZERO, strikeFrame);
         }
         return frameList;
@@ -39,7 +40,7 @@ public class TestDataGenerator {
         FinalFrame finalFrame = new FinalFrame(NINE, ZERO, ZERO);
         frameList.add(finalFrame);
         for (int i = 0; i < 9; i++) {
-            NormalFrame normalFrame = new NormalFrame(NINE, ZERO, finalFrame);
+            NormalFrame normalFrame = new NormalFrame(NINE, ZERO,() -> frameList.get(ZERO));
             frameList.add(ZERO, normalFrame);
         }
         return frameList;
@@ -50,7 +51,7 @@ public class TestDataGenerator {
         FinalFrame finalFrame = new FinalFrame(FIVE, FIVE, FIVE);
         frameList.add(finalFrame);
         for (int i = 0; i < 9; i++) {
-            SpareFrame normalFrame = new SpareFrame(FIVE, FIVE, finalFrame);
+            SpareFrame normalFrame = new SpareFrame(FIVE, FIVE, () -> frameList.get(ZERO));
             frameList.add(ZERO, normalFrame);
         }
         return frameList;

@@ -14,7 +14,7 @@ class StrikeFrameTest {
 
     @BeforeEach
     void setUp() {
-        this.strikeFrameUnderTest = new StrikeFrame(NORMAL_FRAME_4_5);
+        this.strikeFrameUnderTest = new StrikeFrame(() -> NORMAL_FRAME_4_5);
     }
 
     @Test
@@ -56,14 +56,14 @@ class StrikeFrameTest {
     }
 
     @Test
-    void equals(){
+    void equals() {
         assertThat(strikeFrameUnderTest.equals(strikeFrameUnderTest))
                 .isTrue();
         assertThat(strikeFrameUnderTest.equals(this))
                 .isFalse();
         assertThat(strikeFrameUnderTest.equals(new StrikeFrame(any())))
                 .isFalse();
-        assertThat(strikeFrameUnderTest.equals(new StrikeFrame(NORMAL_FRAME_4_5)))
+        assertThat(strikeFrameUnderTest.equals(new StrikeFrame(()->NORMAL_FRAME_4_5)))
                 .isTrue();
     }
 }

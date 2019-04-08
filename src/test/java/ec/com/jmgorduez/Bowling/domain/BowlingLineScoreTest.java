@@ -54,8 +54,5 @@ class BowlingLineScoreTest {
         bowlingLineScoreUnderTest.addFrame(NORMAL_FRAME_4_5);
         assertThat(bowlingLineScoreUnderTest.frameList)
                 .isEqualTo(frameListExpected);
-        IFrame frameToAdd = NORMAL_FRAME_4_4;
-        bowlingLineScoreUnderTest.addFrame(frameToAdd);
-        frameToAdd.nextFrame().equals(NORMAL_FRAME_4_5);
     }
 }

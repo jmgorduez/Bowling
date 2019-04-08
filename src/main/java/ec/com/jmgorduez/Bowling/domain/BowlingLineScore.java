@@ -23,9 +23,6 @@ public class BowlingLineScore implements IBowlingLineScore {
 
     @Override
     public void addFrame(IFrame frame) {
-        if(isNotEmptyFramesList()) {
-            frame.setNextFrame(frameList.get(ZERO));
-        }
         frameList.add(frame);
     }
 

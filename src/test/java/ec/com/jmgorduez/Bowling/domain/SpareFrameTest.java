@@ -13,7 +13,7 @@ class SpareFrameTest {
 
     @BeforeEach
     void setUp() {
-        this.spareFrameUnderTest = new SpareFrame(SEVEN, THREE, NORMAL_FRAME_4_5);
+        this.spareFrameUnderTest = new SpareFrame(SEVEN, THREE, () -> NORMAL_FRAME_4_5);
     }
 
     @Test

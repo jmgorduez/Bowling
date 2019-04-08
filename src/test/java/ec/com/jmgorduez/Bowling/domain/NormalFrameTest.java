@@ -14,7 +14,7 @@ class NormalFrameTest {
 
     @BeforeEach
     void setUp() {
-        this.normalFrameUnderTest = new NormalFrame(THREE, FIVE, NORMAL_FRAME_4_5);
+        this.normalFrameUnderTest = new NormalFrame(THREE, FIVE, ()->NORMAL_FRAME_4_5);
     }
 
     @Test
@@ -61,14 +61,7 @@ class NormalFrameTest {
                 .isFalse();
         assertThat(normalFrameUnderTest.equals(new NormalFrame(THREE, FIVE, any())))
                 .isFalse();
-        assertThat(normalFrameUnderTest.equals(new NormalFrame(THREE, FIVE, NORMAL_FRAME_4_5)))
+        assertThat(normalFrameUnderTest.equals(new NormalFrame(THREE, FIVE, ()->NORMAL_FRAME_4_5)))
                 .isTrue();
-    }
-
-    @Test
-    void setNextFrame(){
-        normalFrameUnderTest.setNextFrame(NORMAL_FRAME_4_4);
-        assertThat(normalFrameUnderTest.nextFrame())
-                .isEqualTo(NORMAL_FRAME_4_4);
     }
 }
