@@ -34,7 +34,7 @@ class StrikeFrameTest {
     @Test
     void getBonusForStrike() {
         assertThat(strikeFrameUnderTest.getBonusForStrike())
-                .isEqualTo(TEN + ZERO);
+                .isEqualTo(TEN + FOUR);
     }
 
     @Test
