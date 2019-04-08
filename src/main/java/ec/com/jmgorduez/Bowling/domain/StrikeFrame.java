@@ -30,7 +30,7 @@ public class StrikeFrame implements IFrame {
 
     @Override
     public Integer getBonusForSpare() {
-        return nextFrame.getPointsFirstBall();
+        return TEN;
     }
 
     @Override
