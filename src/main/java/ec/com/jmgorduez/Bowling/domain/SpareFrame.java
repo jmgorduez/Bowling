@@ -3,10 +3,15 @@ package ec.com.jmgorduez.Bowling.domain;
 import ec.com.jmgorduez.Bowling.domain.abstractions.IFrame;
 
 public class SpareFrame implements IFrame {
+    private Integer pointsFirstBall;
+
+    public SpareFrame(Integer pointsFirstBall){
+        this.pointsFirstBall = pointsFirstBall;
+    }
 
     @Override
     public Integer pointsFirstBall() {
-        return null;
+        return pointsFirstBall;
     }
 
     @Override

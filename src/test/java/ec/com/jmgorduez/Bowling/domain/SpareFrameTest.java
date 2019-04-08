@@ -11,7 +11,7 @@ class SpareFrameTest {
 
     @BeforeEach
     void setUp() {
-        this.spareFrameUnderTest = new SpareFrame();
+        this.spareFrameUnderTest = new SpareFrame(FIVE);
     }
 
     @Test
