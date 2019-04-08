@@ -23,7 +23,7 @@ public class StrikeFrame implements IFrame {
 
     @Override
     public Integer getBonusForStrike() {
-        return null;
+        return TEN;
     }
 
     @Override
