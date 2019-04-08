@@ -50,4 +50,12 @@ class NormalFrameTest {
         assertThat(normalFrameUnderTest.getPoints())
                 .isEqualTo(THREE + FIVE);
     }
+
+    @Test
+    void equals(){
+        assertThat(normalFrameUnderTest.equals(normalFrameUnderTest))
+                .isTrue();
+        assertThat(normalFrameUnderTest.equals(this))
+                .isFalse();
+    }
 }
