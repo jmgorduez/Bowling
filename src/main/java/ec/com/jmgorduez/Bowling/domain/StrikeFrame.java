@@ -40,6 +40,6 @@ public class StrikeFrame implements IFrame {
 
     @Override
     public Integer getPoints() {
-        return null;
+        return TEN + nextFrame.getPointsFirstBall() + nextFrame.getPointsSecondBall();
     }
 }
