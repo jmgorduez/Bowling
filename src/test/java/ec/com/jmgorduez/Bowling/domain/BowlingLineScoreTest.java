@@ -17,7 +17,7 @@ class BowlingLineScoreTest {
     @BeforeEach
     void setUp() {
         bowlingLineScoreUnderTest
-                = new BowlingLineScore(generateFramesList12Strikes());
+                = new BowlingLineScore();
     }
 
     @Test
@@ -25,11 +25,11 @@ class BowlingLineScoreTest {
         assertThat(bowlingLineScoreUnderTest.getTotalScore())
                 .isEqualTo(THREE_HUNDRED);
         bowlingLineScoreUnderTest
-                = new BowlingLineScore(generateFramesList10PairsOf9AndMiss());
+                = new BowlingLineScore();
         assertThat(bowlingLineScoreUnderTest.getTotalScore())
                 .isEqualTo(NINETY);
         bowlingLineScoreUnderTest
-                = new BowlingLineScore(generateFramesList10PairsOf5AndSpareWithAFinal5());
+                = new BowlingLineScore();
         assertThat(bowlingLineScoreUnderTest.getTotalScore())
                 .isEqualTo(ONE_HUNDRED_FIFTY);
     }

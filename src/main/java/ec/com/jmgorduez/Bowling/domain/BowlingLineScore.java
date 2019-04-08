@@ -3,13 +3,14 @@ package ec.com.jmgorduez.Bowling.domain;
 import ec.com.jmgorduez.Bowling.domain.abstractions.IBowlingLineScore;
 import ec.com.jmgorduez.Bowling.domain.abstractions.IFrame;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class BowlingLineScore implements IBowlingLineScore {
     List<IFrame> frameList;
 
-    public BowlingLineScore(List<IFrame> frameList) {
-        this.frameList = frameList;
+    public BowlingLineScore() {
+        this.frameList = new ArrayList<>();
     }
 
     @Override
@@ -20,6 +21,6 @@ public class BowlingLineScore implements IBowlingLineScore {
 
     @Override
     public void addFrame(IFrame frame) {
-
+        frameList.add(frame);
     }
 }
