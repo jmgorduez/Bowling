@@ -38,7 +38,11 @@ class BowlingLineScoreReaderTest {
 
     @Test
     void readScoreBowlingGame() {
-        assertThat(bowlingLineScoreReaderUnderTest.readScoreBowlingGame(bufferedReaderMock))
-                .isEqualTo(generateFramesList12Strikes());
+        try {
+            assertThat(bowlingLineScoreReaderUnderTest.readScoreBowlingGame(bufferedReaderMock))
+                    .isEqualTo(generateFramesList12Strikes());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
