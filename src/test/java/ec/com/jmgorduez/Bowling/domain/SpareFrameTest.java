@@ -43,6 +43,8 @@ class SpareFrameTest {
 
     @Test
     void nextFrame() {
+        assertThat(spareFrameUnderTest.nextFrame())
+                .isEqualTo(NORMAL_FRAME_4_5);
     }
 
     @Test
