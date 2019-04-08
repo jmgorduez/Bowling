@@ -10,16 +10,6 @@ public class FinalSpareFrame extends AbstractFrame {
     }
 
     @Override
-    public Integer bonusForStrike() {
-        return pointsFirstBall + pointsSecondBall;
-    }
-
-    @Override
-    public Integer bonusForSpare() {
-        return null;
-    }
-
-    @Override
     public Integer totalPoints() {
         return null;
     }

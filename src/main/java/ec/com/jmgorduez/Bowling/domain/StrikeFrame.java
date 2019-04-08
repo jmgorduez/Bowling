@@ -14,16 +14,11 @@ public class StrikeFrame extends AbstractFrame {
 
     @Override
     public Integer bonusForStrike() {
-        return TEN + nextFrame.pointsFirstBall();
-    }
-
-    @Override
-    public Integer bonusForSpare() {
-        return TEN;
+        return pointsFirstBall + nextFrame.pointsFirstBall();
     }
 
     @Override
     public Integer totalPoints() {
-        return TEN + nextFrame.pointsFirstBall() + nextFrame.pointsSecondBall();
+        return totalPoints() + nextFrame.pointsFirstBall() + nextFrame.pointsSecondBall();
     }
 }

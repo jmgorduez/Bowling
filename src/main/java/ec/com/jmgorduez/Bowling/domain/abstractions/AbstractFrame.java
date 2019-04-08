@@ -30,4 +30,19 @@ public abstract class AbstractFrame implements IFrame {
     public IFrame nextFrame() {
         return this.nextFrame;
     }
+
+    @Override
+    public Integer bonusForStrike() {
+        return pointsFirstBall + pointsSecondBall;
+    }
+
+    @Override
+    public Integer bonusForSpare() {
+        return pointsFirstBall;
+    }
+
+    @Override
+    public Integer totalPoints() {
+        return this.pointsFirstBall + this.pointsSecondBall;
+    }
 }

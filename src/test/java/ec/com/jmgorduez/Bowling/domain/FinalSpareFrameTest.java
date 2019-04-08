@@ -16,16 +16,8 @@ class FinalSpareFrameTest {
     }
 
     @Test
-    void bonusForStrike() {
-        assertThat(finalSpareFrameUnderTest.bonusForStrike())
-                .isEqualTo(TEN + TEN);
-    }
-
-    @Test
-    void bonusForSpare() {
-    }
-
-    @Test
     void totalPoints() {
+        assertThat(finalSpareFrameUnderTest.totalPoints())
+                .isEqualTo(TEN + TEN + TEN);
     }
 }

@@ -8,19 +8,4 @@ public class NormalFrame extends AbstractFrame {
     public NormalFrame(Integer pointsFirstBall, Integer pointsSecondBall, IFrame nextFrame){
         super(pointsFirstBall, pointsSecondBall, nextFrame);
     }
-
-    @Override
-    public Integer bonusForStrike() {
-        return pointsFirstBall + pointsSecondBall;
-    }
-
-    @Override
-    public Integer bonusForSpare() {
-        return pointsFirstBall;
-    }
-
-    @Override
-    public Integer totalPoints() {
-        return this.pointsFirstBall + this.pointsSecondBall;
-    }
 }

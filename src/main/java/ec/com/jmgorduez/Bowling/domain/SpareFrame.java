@@ -10,17 +10,7 @@ public class SpareFrame extends AbstractFrame {
     }
 
     @Override
-    public Integer bonusForStrike() {
-        return pointsFirstBall + pointsSecondBall;
-    }
-
-    @Override
-    public Integer bonusForSpare() {
-        return pointsFirstBall;
-    }
-
-    @Override
     public Integer totalPoints() {
-        return pointsFirstBall + pointsSecondBall + nextFrame.pointsFirstBall();
+        return totalPoints() + nextFrame.pointsFirstBall();
     }
 }
