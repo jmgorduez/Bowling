@@ -31,6 +31,8 @@ class SpareFrameTest {
 
     @Test
     void bonusForStrike() {
+        assertThat(spareFrameUnderTest.bonusForStrike())
+                .isEqualTo(FIVE);
     }
 
     @Test
