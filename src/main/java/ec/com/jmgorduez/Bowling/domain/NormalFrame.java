@@ -48,6 +48,9 @@ public class NormalFrame implements IFrame {
         if (this == other){
             return true;
         }
-        return false;
+        if (!(other instanceof NormalFrame)){
+            return false;
+        }
+        return true;
     }
 }
