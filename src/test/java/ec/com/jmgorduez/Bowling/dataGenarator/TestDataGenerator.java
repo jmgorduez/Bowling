@@ -15,6 +15,7 @@ import static org.mockito.ArgumentMatchers.any;
 
 public class TestDataGenerator {
     public static final NormalFrame NORMAL_FRAME_4_5 = new NormalFrame(FOUR, FIVE, any());
+    public static final NormalFrame NORMAL_FRAME_4_4 = new NormalFrame(FOUR, FOUR, any());
 
     public static final Integer THREE_HUNDRED = 300;
     public static final Integer NINETY = 90;
