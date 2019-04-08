@@ -51,5 +51,7 @@ class StrikeFrameTest {
 
     @Test
     void getPoints() {
+        assertThat(strikeFrameUnderTest.getPoints())
+                .isEqualTo(TEN + FOUR + FIVE);
     }
 }
