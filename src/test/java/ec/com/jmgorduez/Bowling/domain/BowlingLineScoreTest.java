@@ -21,17 +21,21 @@ class BowlingLineScoreTest {
     }
 
     @Test
-    void getTotalScore() {
+    void getTotalScore12Strikes() {
         addFrames(generateFramesList12Strikes());
         assertThat(bowlingLineScoreUnderTest.getTotalScore())
                 .isEqualTo(THREE_HUNDRED);
-        bowlingLineScoreUnderTest
-                = new BowlingLineScore();
+    }
+
+    @Test
+    void getTotalScore10PairsOf9AndMiss() {
         addFrames(generateFramesList10PairsOf9AndMiss());
         assertThat(bowlingLineScoreUnderTest.getTotalScore())
                 .isEqualTo(NINETY);
-        bowlingLineScoreUnderTest
-                = new BowlingLineScore();
+    }
+
+    @Test
+    void getTotalScore10PairsOf5AndSpareWithAFinal5() {
         addFrames(generateFramesList10PairsOf5AndSpareWithAFinal5());
         assertThat(bowlingLineScoreUnderTest.getTotalScore())
                 .isEqualTo(ONE_HUNDRED_FIFTY);
