@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import static ec.com.jmgorduez.Bowling.dataGenarator.TestDataGenerator.NORMAL_FRAME_4_5;
 import static ec.com.jmgorduez.Bowling.utils.Constants.*;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.ArgumentMatchers.any;
 
 class StrikeFrameTest {
 
@@ -53,5 +54,17 @@ class StrikeFrameTest {
     void getPoints() {
         assertThat(strikeFrameUnderTest.getPoints())
                 .isEqualTo(TEN + FOUR + FIVE);
+    }
+
+    @Test
+    void equals(){
+        assertThat(strikeFrameUnderTest.equals(strikeFrameUnderTest))
+                .isTrue();
+        assertThat(strikeFrameUnderTest.equals(this))
+                .isFalse();
+        assertThat(strikeFrameUnderTest.equals(new StrikeFrame(any())))
+                .isFalse();
+        assertThat(strikeFrameUnderTest.equals(new StrikeFrame(NORMAL_FRAME_4_5)))
+                .isTrue();
     }
 }
