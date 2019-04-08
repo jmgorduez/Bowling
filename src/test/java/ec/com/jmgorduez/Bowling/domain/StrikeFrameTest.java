@@ -45,6 +45,8 @@ class StrikeFrameTest {
 
     @Test
     void nextFrame() {
+        assertThat(strikeFrameUnderTest.nextFrame())
+                .isEqualTo(NORMAL_FRAME_4_5);
     }
 
     @Test
