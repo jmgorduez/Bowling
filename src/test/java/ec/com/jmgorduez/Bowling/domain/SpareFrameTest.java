@@ -5,8 +5,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static ec.com.jmgorduez.Bowling.dataGenarator.TestDataGenerator.NORMAL_FRAME_4_5;
-import static ec.com.jmgorduez.Bowling.utils.Constants.FIVE;
-import static ec.com.jmgorduez.Bowling.utils.Constants.THREE;
+import static ec.com.jmgorduez.Bowling.utils.Constants.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class SpareFrameTest {
@@ -49,5 +48,7 @@ class SpareFrameTest {
 
     @Test
     void totalPoints() {
+        assertThat(spareFrameUnderTest.totalPoints())
+                .isEqualTo(TEN + FOUR);
     }
 }
