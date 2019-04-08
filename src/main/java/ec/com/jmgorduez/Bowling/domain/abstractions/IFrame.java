@@ -11,6 +11,8 @@ public interface IFrame {
 
     IFrame nextFrame();
 
+    void setNextFrame(IFrame nextFrame);
+
     Integer totalPoints();
 
     default boolean equals(IFrame other) {

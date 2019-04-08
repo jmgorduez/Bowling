@@ -6,6 +6,8 @@ import ec.com.jmgorduez.Bowling.domain.abstractions.IFrame;
 import java.util.ArrayList;
 import java.util.List;
 
+import static ec.com.jmgorduez.Bowling.utils.Constants.ZERO;
+
 public class BowlingLineScore implements IBowlingLineScore {
     List<IFrame> frameList;
 
@@ -21,6 +23,13 @@ public class BowlingLineScore implements IBowlingLineScore {
 
     @Override
     public void addFrame(IFrame frame) {
+        if(isNotEmptyFramesList()) {
+            frame.setNextFrame(frameList.get(ZERO));
+        }
         frameList.add(frame);
+    }
+
+    boolean isNotEmptyFramesList() {
+        return !frameList.isEmpty();
     }
 }
