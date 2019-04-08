@@ -4,8 +4,10 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static ec.com.jmgorduez.Bowling.dataGenarator.TestDataGenerator.*;
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static ec.com.jmgorduez.Bowling.utils.Constants.FIVE;
+import static ec.com.jmgorduez.Bowling.utils.Constants.THREE;
+import static org.assertj.core.api.Assertions.*;
+import static org.mockito.ArgumentMatchers.any;
 
 class NormalFrameTest {
     private NormalFrame normalFrameUnderTest;
@@ -57,5 +59,9 @@ class NormalFrameTest {
                 .isTrue();
         assertThat(normalFrameUnderTest.equals(this))
                 .isFalse();
+        assertThat(normalFrameUnderTest.equals(new NormalFrame(THREE, FIVE, any())))
+                .isFalse();
+        assertThat(normalFrameUnderTest.equals(new NormalFrame(THREE, FIVE, NORMAL_FRAME_4_5)))
+                .isTrue();
     }
 }

@@ -51,6 +51,9 @@ public class NormalFrame implements IFrame {
         if (!(other instanceof NormalFrame)){
             return false;
         }
-        return true;
+        NormalFrame otherNormalFrame = (NormalFrame) other;
+        return this.pointsFirstBall.equals(otherNormalFrame.pointsFirstBall)
+                && this.pointsSecondBall.equals(otherNormalFrame.pointsSecondBall)
+                && this.nextFrame.equals(otherNormalFrame.nextFrame);
     }
 }
