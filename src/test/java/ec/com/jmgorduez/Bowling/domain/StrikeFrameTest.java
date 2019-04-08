@@ -4,8 +4,7 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static ec.com.jmgorduez.Bowling.utils.Constants.TEN;
-import static ec.com.jmgorduez.Bowling.utils.Constants.ZERO;
+import static ec.com.jmgorduez.Bowling.utils.Constants.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class StrikeFrameTest {
@@ -39,6 +38,8 @@ class StrikeFrameTest {
 
     @Test
     void getBonusForSpare() {
+        assertThat(strikeFrameUnderTest.getBonusForSpare())
+                .isEqualTo(NINE);
     }
 
     @Test
