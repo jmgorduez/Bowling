@@ -19,6 +19,6 @@ public class StrikeFrame extends AbstractFrame {
 
     @Override
     public Integer totalPoints() {
-        return totalPoints() + nextFrame.pointsFirstBall() + nextFrame.pointsSecondBall();
+        return super.totalPoints() + nextFrame.pointsFirstBall() + nextFrame.pointsSecondBall();
     }
 }

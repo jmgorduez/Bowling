@@ -5,14 +5,13 @@ import org.junit.jupiter.api.Test;
 
 import static ec.com.jmgorduez.Bowling.utils.Constants.TEN;
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
-class FinalSpareFrameTest {
-    private FinalSpareFrame finalSpareFrameUnderTest;
+class FinalFrameTest {
+    private FinalFrame finalSpareFrameUnderTest;
 
     @BeforeEach
     void setUp() {
-        finalSpareFrameUnderTest = new FinalSpareFrame(TEN, TEN);
+        finalSpareFrameUnderTest = new FinalFrame(TEN, TEN, TEN);
     }
 
     @Test
