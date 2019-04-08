@@ -45,4 +45,9 @@ public abstract class AbstractFrame implements IFrame {
     public Integer totalPoints() {
         return this.pointsFirstBall + this.pointsSecondBall;
     }
+
+    @Override
+    public void setNextFrame(IFrame nextFrame) {
+        this.nextFrame = nextFrame;
+    }
 }
