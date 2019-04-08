@@ -40,7 +40,7 @@ class StrikeFrameTest {
     @Test
     void getBonusForSpare() {
         assertThat(strikeFrameUnderTest.getBonusForSpare())
-                .isEqualTo(FOUR);
+                .isEqualTo(TEN);
     }
 
     @Test
