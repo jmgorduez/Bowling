@@ -4,4 +4,5 @@ import java.io.BufferedReader;
 
 public interface IBowlingLineScore {
     Integer getTotalScore();
+    void addFrame(IFrame frame);
 }

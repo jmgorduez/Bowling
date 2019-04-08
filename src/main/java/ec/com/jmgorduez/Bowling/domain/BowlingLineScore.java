@@ -6,7 +6,7 @@ import ec.com.jmgorduez.Bowling.domain.abstractions.IFrame;
 import java.util.List;
 
 public class BowlingLineScore implements IBowlingLineScore {
-    private List<IFrame> frameList;
+    List<IFrame> frameList;
 
     public BowlingLineScore(List<IFrame> frameList) {
         this.frameList = frameList;
@@ -16,5 +16,10 @@ public class BowlingLineScore implements IBowlingLineScore {
     public Integer getTotalScore() {
         return frameList.stream().mapToInt(iFrame -> iFrame.totalPoints())
                 .sum();
+    }
+
+    @Override
+    public void addFrame(IFrame frame) {
+
     }
 }
