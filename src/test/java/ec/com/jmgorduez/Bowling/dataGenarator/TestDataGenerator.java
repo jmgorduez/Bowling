@@ -2,6 +2,7 @@ package ec.com.jmgorduez.Bowling.dataGenarator;
 
 import ec.com.jmgorduez.Bowling.domain.FinalFrame;
 import ec.com.jmgorduez.Bowling.domain.NormalFrame;
+import ec.com.jmgorduez.Bowling.domain.SpareFrame;
 import ec.com.jmgorduez.Bowling.domain.StrikeFrame;
 import ec.com.jmgorduez.Bowling.domain.abstractions.IFrame;
 
@@ -16,6 +17,7 @@ public class TestDataGenerator {
     public static final NormalFrame NORMAL_FRAME_4_5 = new NormalFrame(FOUR, FIVE, any());
     public static final Integer THREE_HUNDRED = 300;
     public static final Integer NINETY = 90;
+    public static final Integer ONE_HUNDRED_FIFTY = 150;
 
     public static List<IFrame> generateFramesList12Strikes() {
         List<IFrame> frameList = new ArrayList<>();
@@ -23,7 +25,7 @@ public class TestDataGenerator {
         frameList.add(finalFrame);
         for (int i = 0; i < 9; i++) {
             StrikeFrame strikeFrame = new StrikeFrame(finalFrame);
-            frameList.add(ZERO,strikeFrame);
+            frameList.add(ZERO, strikeFrame);
         }
         return frameList;
     }
@@ -34,7 +36,18 @@ public class TestDataGenerator {
         frameList.add(finalFrame);
         for (int i = 0; i < 9; i++) {
             NormalFrame normalFrame = new NormalFrame(NINE, ZERO, finalFrame);
-            frameList.add(ZERO,normalFrame);
+            frameList.add(ZERO, normalFrame);
+        }
+        return frameList;
+    }
+
+    public static List<IFrame> generateFramesList10PairsOf5AndSpareWithAFinal5() {
+        List<IFrame> frameList = new ArrayList<>();
+        FinalFrame finalFrame = new FinalFrame(FIVE, FIVE, FIVE);
+        frameList.add(finalFrame);
+        for (int i = 0; i < 9; i++) {
+            SpareFrame normalFrame = new SpareFrame(FIVE, FIVE, finalFrame);
+            frameList.add(ZERO, normalFrame);
         }
         return frameList;
     }

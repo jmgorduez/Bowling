@@ -24,5 +24,9 @@ class BowlingLineScoreTest {
                 = new BowlingLineScore(generateFramesList10PairsOf9AndMiss());
         assertThat(bowlingLineScoreUnderTest.getTotalScore())
                 .isEqualTo(NINETY);
+        bowlingLineScoreUnderTest
+                = new BowlingLineScore(generateFramesList10PairsOf5AndSpareWithAFinal5());
+        assertThat(bowlingLineScoreUnderTest.getTotalScore())
+                .isEqualTo(ONE_HUNDRED_FIFTY);
     }
 }
