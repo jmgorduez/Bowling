@@ -6,9 +6,14 @@ public abstract class AbstractFrame implements IFrame {
     protected IFrame nextFrame;
 
     public AbstractFrame(Integer pointsFirstBall, Integer pointsSecondBall, IFrame nextFrame){
+        this(pointsFirstBall, pointsSecondBall);
+        this.nextFrame = nextFrame;
+    }
+
+    public AbstractFrame(Integer pointsFirstBall, Integer pointsSecondBall){
         this.pointsFirstBall = pointsFirstBall;
         this.pointsSecondBall = pointsSecondBall;
-        this.nextFrame = nextFrame;
+        this.nextFrame = null;
     }
 
     @Override
