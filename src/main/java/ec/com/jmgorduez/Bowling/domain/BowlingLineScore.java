@@ -8,12 +8,13 @@ import java.util.List;
 public class BowlingLineScore implements IBowlingLineScore {
     private List<IFrame> frameList;
 
-    public BowlingLineScore(List<IFrame> frameList){
+    public BowlingLineScore(List<IFrame> frameList) {
         this.frameList = frameList;
     }
 
     @Override
     public Integer getTotalScore() {
-        return null;
+        return frameList.stream().mapToInt(iFrame -> iFrame.totalPoints())
+                .sum();
     }
 }
