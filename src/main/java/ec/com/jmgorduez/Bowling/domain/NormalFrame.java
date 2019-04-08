@@ -14,22 +14,22 @@ public class NormalFrame implements IFrame {
     }
 
     @Override
-    public Integer getPointsFirstBall() {
+    public Integer pointsFirstBall() {
         return this.pointsFirstBall;
     }
 
     @Override
-    public Integer getPointsSecondBall() {
+    public Integer pointsSecondBall() {
         return this.pointsSecondBall;
     }
 
     @Override
-    public Integer getBonusForStrike() {
+    public Integer bonusForStrike() {
         return pointsFirstBall + pointsSecondBall;
     }
 
     @Override
-    public Integer getBonusForSpare() {
+    public Integer bonusForSpare() {
         return pointsFirstBall;
     }
 
@@ -39,7 +39,7 @@ public class NormalFrame implements IFrame {
     }
 
     @Override
-    public Integer getPoints() {
+    public Integer totalPoints() {
         return this.pointsFirstBall + this.pointsSecondBall;
     }
 }

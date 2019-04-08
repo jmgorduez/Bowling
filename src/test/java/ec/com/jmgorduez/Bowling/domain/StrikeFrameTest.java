@@ -1,6 +1,5 @@
 package ec.com.jmgorduez.Bowling.domain;
 
-import ec.com.jmgorduez.Bowling.dataGenarator.TestDataGenerator;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -20,27 +19,27 @@ class StrikeFrameTest {
 
     @Test
     void getPointsFirstBall() {
-        assertThat(strikeFrameUnderTest.getPointsFirstBall())
+        assertThat(strikeFrameUnderTest.pointsFirstBall())
                 .isEqualTo(TEN);
     }
 
     @Test
     void getPointsSecondBall() {
-        assertThat(strikeFrameUnderTest.getPointsSecondBall())
+        assertThat(strikeFrameUnderTest.pointsSecondBall())
                 .isNotEqualTo(TEN);
-        assertThat(strikeFrameUnderTest.getPointsSecondBall())
+        assertThat(strikeFrameUnderTest.pointsSecondBall())
                 .isEqualTo(ZERO);
     }
 
     @Test
     void getBonusForStrike() {
-        assertThat(strikeFrameUnderTest.getBonusForStrike())
+        assertThat(strikeFrameUnderTest.bonusForStrike())
                 .isEqualTo(TEN + FOUR);
     }
 
     @Test
     void getBonusForSpare() {
-        assertThat(strikeFrameUnderTest.getBonusForSpare())
+        assertThat(strikeFrameUnderTest.bonusForSpare())
                 .isEqualTo(TEN);
     }
 
@@ -52,7 +51,7 @@ class StrikeFrameTest {
 
     @Test
     void getPoints() {
-        assertThat(strikeFrameUnderTest.getPoints())
+        assertThat(strikeFrameUnderTest.totalPoints())
                 .isEqualTo(TEN + FOUR + FIVE);
     }
 

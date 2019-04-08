@@ -19,25 +19,25 @@ class NormalFrameTest {
 
     @Test
     void getPointsFirstBall() {
-        assertThat(normalFrameUnderTest.getPointsFirstBall())
+        assertThat(normalFrameUnderTest.pointsFirstBall())
                 .isEqualTo(THREE);
     }
 
     @Test
     void getPointsSecondBall() {
-        assertThat(normalFrameUnderTest.getPointsSecondBall())
+        assertThat(normalFrameUnderTest.pointsSecondBall())
                 .isEqualTo(FIVE);
     }
 
     @Test
     void getBonusForStrike() {
-        assertThat(normalFrameUnderTest.getBonusForStrike())
+        assertThat(normalFrameUnderTest.bonusForStrike())
                 .isEqualTo(THREE + FIVE);
     }
 
     @Test
     void getBonusForSpare() {
-        assertThat(normalFrameUnderTest.getBonusForSpare())
+        assertThat(normalFrameUnderTest.bonusForSpare())
                 .isEqualTo(THREE);
     }
 
@@ -49,7 +49,7 @@ class NormalFrameTest {
 
     @Test
     void getPoints(){
-        assertThat(normalFrameUnderTest.getPoints())
+        assertThat(normalFrameUnderTest.totalPoints())
                 .isEqualTo(THREE + FIVE);
     }
 

@@ -14,22 +14,22 @@ public class StrikeFrame implements IFrame {
     }
 
     @Override
-    public Integer getPointsFirstBall() {
+    public Integer pointsFirstBall() {
         return TEN;
     }
 
     @Override
-    public Integer getPointsSecondBall() {
+    public Integer pointsSecondBall() {
         return ZERO;
     }
 
     @Override
-    public Integer getBonusForStrike() {
-        return TEN + nextFrame.getPointsFirstBall();
+    public Integer bonusForStrike() {
+        return TEN + nextFrame.pointsFirstBall();
     }
 
     @Override
-    public Integer getBonusForSpare() {
+    public Integer bonusForSpare() {
         return TEN;
     }
 
@@ -39,7 +39,7 @@ public class StrikeFrame implements IFrame {
     }
 
     @Override
-    public Integer getPoints() {
-        return TEN + nextFrame.getPointsFirstBall() + nextFrame.getPointsSecondBall();
+    public Integer totalPoints() {
+        return TEN + nextFrame.pointsFirstBall() + nextFrame.pointsSecondBall();
     }
 }

@@ -1,19 +1,17 @@
 package ec.com.jmgorduez.Bowling.domain.abstractions;
 
-import ec.com.jmgorduez.Bowling.domain.NormalFrame;
-
 public interface IFrame {
-    Integer getPointsFirstBall();
+    Integer pointsFirstBall();
 
-    Integer getPointsSecondBall();
+    Integer pointsSecondBall();
 
-    Integer getBonusForStrike();
+    Integer bonusForStrike();
 
-    Integer getBonusForSpare();
+    Integer bonusForSpare();
 
     IFrame nextFrame();
 
-    Integer getPoints();
+    Integer totalPoints();
 
     default boolean equals(IFrame other) {
         if (this == other) {
@@ -25,8 +23,8 @@ public interface IFrame {
         if (!(other.getClass().equals(this.getClass()))) {
             return false;
         }
-        return this.getPointsFirstBall().equals(other.getPointsFirstBall())
-                && this.getPointsSecondBall().equals(other.getPointsSecondBall())
+        return this.pointsFirstBall().equals(other.pointsFirstBall())
+                && this.pointsSecondBall().equals(other.pointsSecondBall())
                 && this.nextFrame().equals(other.nextFrame());
     }
 }
