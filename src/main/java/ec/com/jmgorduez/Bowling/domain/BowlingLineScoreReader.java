@@ -37,10 +37,14 @@ public class BowlingLineScoreReader implements IBowlingLineScoreReader {
     }
 
     String takeFinalFrameSection(String[] frames){
-        if(frames.length == TWELVE){
+        if(isStrikeFinalFrame(frames)){
             return STRIKE_FINAL_FRAME_STRING;
         }
         return null;
+    }
+
+    boolean isStrikeFinalFrame(String[] frames) {
+        return frames.length == TWELVE;
     }
 
     IFrame stringArrayToFinalFrame() {
