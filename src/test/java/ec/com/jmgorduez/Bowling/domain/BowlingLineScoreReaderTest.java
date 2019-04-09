@@ -14,8 +14,7 @@ import java.io.IOException;
 import java.util.List;
 
 import static ec.com.jmgorduez.Bowling.dataGenarator.TestDataGenerator.*;
-import static ec.com.jmgorduez.Bowling.utils.Constants.BLANK_SPACE_STRING;
-import static ec.com.jmgorduez.Bowling.utils.Constants.STRIKE_FINAL_FRAME_STRING;
+import static ec.com.jmgorduez.Bowling.utils.Constants.*;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.when;
 
