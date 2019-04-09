@@ -55,7 +55,8 @@ class BowlingLineScoreReaderTest {
 
     @Test
     void stringToFramesList() {
-        assertThat(bowlingLineScoreReaderUnderTest.stringToFramesList(STRING_LINE_12_STRIKES))
+        assertThat(bowlingLineScoreReaderUnderTest
+                .stringToFramesList(STRING_LINE_12_STRIKES))
                 .isEqualTo(generateFramesList12Strikes());
     }
 
@@ -64,5 +65,12 @@ class BowlingLineScoreReaderTest {
         assertThat(bowlingLineScoreReaderUnderTest
                 .takeFinalFrameSection(STRING_ARRAY_12_STRIKES))
                 .isEqualTo(STRIKE_FINAL_FRAME_STRING);
+    }
+
+    @Test
+    void stringArrayToFinalFrame(){
+        assertThat(bowlingLineScoreReaderUnderTest
+                .stringArrayToFinalFrame(STRING_ARRAY_12_STRIKES))
+                .isEqualTo(STRIKE_FINAL_FRAME);
     }
 }
