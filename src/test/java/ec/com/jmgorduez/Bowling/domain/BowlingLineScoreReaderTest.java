@@ -9,9 +9,7 @@ import org.mockito.MockitoAnnotations;
 
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import static ec.com.jmgorduez.Bowling.dataGenarator.TestDataGenerator.*;
 import static ec.com.jmgorduez.Bowling.utils.Constants.*;
@@ -67,7 +65,7 @@ class BowlingLineScoreReaderTest {
 
         assertThat(bowlingLineScoreReaderUnderTest
                 .takeFinalFrameSection(STRING_ARRAY_10_PAIRS_OF_9_AND_MISS))
-                .isEqualTo(FINAL_FRAME_10_PAIRS_OF_9_AND_MISS_MISS_STRING);
+                .isEqualTo(FINAL_FRAME_10_PAIRS_OF_9_AND_MISS_STRING_FILL);
     }
 
     @Test

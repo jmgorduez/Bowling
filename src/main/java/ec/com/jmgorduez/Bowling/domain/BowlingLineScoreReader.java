@@ -14,6 +14,7 @@ import java.util.stream.Collectors;
 import static ec.com.jmgorduez.Bowling.utils.Constants.*;
 
 public class BowlingLineScoreReader implements IBowlingLineScoreReader {
+
     @Override
     public IBowlingLineScore readBowlingLineScore(BufferedReader bufferedReader)
             throws IOException {
@@ -38,17 +39,53 @@ public class BowlingLineScoreReader implements IBowlingLineScoreReader {
         return frameList;
     }
 
-    String takeFinalFrameSection(String[] frames){
+    String takeFinalFrameSection(String[] frames) {
         String[] finalFrameSection = Arrays.copyOfRange(frames, NINE, frames.length);
-        return Arrays.stream(finalFrameSection).collect(Collectors.joining());
+        return completeFinalCharacterIfItNeed(
+                Arrays.stream(finalFrameSection)
+                        .collect(Collectors.joining()));
+    }
+
+    String completeFinalCharacterIfItNeed(String finalFrameSection) {
+        if (finalFrameSection.length() < THREE) {
+           return finalFrameSection.concat(CHARACTER_MISS.toString());
+        }
+        return finalFrameSection;
     }
 
     FinalFrame takeFinalFrame(String[] frames) {
-        String finalframeSection = takeFinalFrameSection(frames);
-        if(STRIKE_FINAL_FRAME_STRING.equals(finalframeSection)){
+        String finalFrameSection = takeFinalFrameSection(frames);
+        if (isAStrikeFinalFrame(finalFrameSection)) {
             return STRIKE_FINAL_FRAME;
         }
+        finalFrameSection.chars()
+                .mapToObj(value -> (char) value)
+                .map(character -> mapCharToInteger(character, finalFrameSection))
+                .collect(Collectors.toList());
         return null;
+    }
+
+    int mapCharToInteger(char value, String finalFrameSection) {
+        if (Character.isDigit(value)) {
+            return value;
+        }
+        if (isAMissValue(value)) {
+            return ZERO;
+        }
+        return getRemainder(finalFrameSection, value);
+    }
+
+    boolean isAMissValue(char value) {
+        return CHARACTER_MISS.equals(value);
+    }
+
+    Integer getRemainder(String finalFrameSection, char value) {
+        int index = finalFrameSection.indexOf(value);
+        return TEN - new Integer(finalFrameSection.charAt(index - ONE));
+    }
+
+    boolean isAStrikeFinalFrame(String finalframeSection) {
+        return STRIKE_FINAL_FRAME_STRING.equals(finalframeSection);
     }
 
     IFrame stringToFrame(String frameString, IFrame nextFrame) {
