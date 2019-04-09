@@ -48,7 +48,8 @@ public class BowlingLineScoreReader implements IBowlingLineScoreReader {
     }
 
     FinalFrame takeFinalFrame(String[] frames) {
-        if(STRIKE_FINAL_FRAME_STRING.equals(takeFinalFrameSection(frames))){
+        String finalframeSection = takeFinalFrameSection(frames);
+        if(STRIKE_FINAL_FRAME_STRING.equals(finalframeSection)){
             return STRIKE_FINAL_FRAME;
         }
         return null;

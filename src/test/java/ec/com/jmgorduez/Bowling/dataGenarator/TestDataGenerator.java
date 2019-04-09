@@ -28,6 +28,8 @@ public class TestDataGenerator {
     public static final String STRING_LINE_12_STRIKES = "X X X X X X X X X X X X";
     public static final String STRING_LINE_10_PAIRS_OF_9_AND_MISS = "X X X X X X X X X X X X";
 
+    public static final String FINAL_FRAME_10_PAIRS_OF_9_AND_MISS_STRING = "9-";
+
     public static final String[] STRING_ARRAY_12_STRIKES = STRING_LINE_12_STRIKES.split(BLANK_SPACE_STRING);
     public static final String[] STRING_ARRAY_10_PAIRS_OF_9_AND_MISS = STRING_LINE_10_PAIRS_OF_9_AND_MISS.split(BLANK_SPACE_STRING);
 
