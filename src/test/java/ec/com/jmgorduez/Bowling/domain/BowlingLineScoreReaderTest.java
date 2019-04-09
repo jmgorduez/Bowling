@@ -1,8 +1,6 @@
 package ec.com.jmgorduez.Bowling.domain;
 
-import ec.com.jmgorduez.Bowling.domain.abstractions.IBowlingLineScore;
 import ec.com.jmgorduez.Bowling.domain.abstractions.IFrame;
-import ec.com.jmgorduez.Bowling.utils.Constants;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
@@ -67,9 +65,13 @@ class BowlingLineScoreReaderTest {
     }
 
     @Test
-    void stringArrayToFinalFrame(){
+    void takeFinalFrame(){
         assertThat(bowlingLineScoreReaderUnderTest
-                .stringArrayToFinalFrame(STRING_ARRAY_12_STRIKES))
+                .takeFinalFrame(STRING_ARRAY_12_STRIKES))
                 .isEqualTo(STRIKE_FINAL_FRAME);
+
+        assertThat(bowlingLineScoreReaderUnderTest
+                .takeFinalFrame(STRING_ARRAY_10_PAIRS_OF_9_AND_MISS))
+                .isEqualTo(FINAL_NORMAL_FRAME_9_);
     }
 }

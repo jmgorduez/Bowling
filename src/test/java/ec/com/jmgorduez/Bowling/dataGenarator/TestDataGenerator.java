@@ -19,14 +19,17 @@ public class TestDataGenerator {
     public static final NormalFrame NORMAL_FRAME_4_4 = new NormalFrame(FOUR, FOUR, null);
     public static final NormalFrame NORMAL_FRAME_4_5 = new NormalFrame(FOUR, FIVE, NORMAL_FRAME_4_4);
     public static final StrikeFrame STRIKE_FRAME = new StrikeFrame(NORMAL_FRAME_4_5);
+    public static final FinalFrame FINAL_NORMAL_FRAME_9_ = new FinalFrame(NINE, ZERO, ZERO);
 
     public static final Integer THREE_HUNDRED = 300;
     public static final Integer NINETY = 90;
     public static final Integer ONE_HUNDRED_FIFTY = 150;
 
     public static final String STRING_LINE_12_STRIKES = "X X X X X X X X X X X X";
+    public static final String STRING_LINE_10_PAIRS_OF_9_AND_MISS = "X X X X X X X X X X X X";
 
     public static final String[] STRING_ARRAY_12_STRIKES = STRING_LINE_12_STRIKES.split(BLANK_SPACE_STRING);
+    public static final String[] STRING_ARRAY_10_PAIRS_OF_9_AND_MISS = STRING_LINE_10_PAIRS_OF_9_AND_MISS.split(BLANK_SPACE_STRING);
 
     public static List<IFrame> generateFramesList12Strikes() {
         List<IFrame> frameList = new ArrayList<>();
