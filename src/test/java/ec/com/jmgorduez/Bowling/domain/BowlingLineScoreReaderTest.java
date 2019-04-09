@@ -49,4 +49,9 @@ class BowlingLineScoreReaderTest {
             e.printStackTrace();
         }
     }
+
+    @Test
+    void stringToFramesList(){
+
+    }
 }
