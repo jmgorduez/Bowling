@@ -15,4 +15,5 @@ public class Constants {
 
     public static final String BLANK_SPACE_STRING = " ";
     public static final String STRIKE_FRAME_STRING = "X";
+    public static final String STRIKE_FINAL_FRAME_STRING = "X X X";
 }

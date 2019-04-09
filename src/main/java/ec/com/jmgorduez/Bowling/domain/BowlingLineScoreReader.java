@@ -36,6 +36,10 @@ public class BowlingLineScoreReader implements IBowlingLineScoreReader {
         return frameList;
     }
 
+    String[] takeFinalFrameSection(String[] frames){
+        return null;
+    }
+
     IFrame stringArrayToFinalFrame() {
         return new FinalFrame(TEN, TEN, TEN);
     }

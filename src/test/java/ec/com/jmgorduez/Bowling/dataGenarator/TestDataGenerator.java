@@ -26,6 +26,8 @@ public class TestDataGenerator {
 
     public static final String STRING_LINE_12_STRIKES = "X X X X X X X X X X X X";
 
+    public static final String[] STRING_ARRAY_12_STRIKES = STRING_LINE_12_STRIKES.split(BLANK_SPACE_STRING);
+
     public static List<IFrame> generateFramesList12Strikes() {
         List<IFrame> frameList = new ArrayList<>();
         IFrame nextFrame = new FinalFrame(TEN, TEN, TEN);

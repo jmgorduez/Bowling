@@ -2,6 +2,7 @@ package ec.com.jmgorduez.Bowling.domain;
 
 import ec.com.jmgorduez.Bowling.domain.abstractions.IBowlingLineScore;
 import ec.com.jmgorduez.Bowling.domain.abstractions.IFrame;
+import ec.com.jmgorduez.Bowling.utils.Constants;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
@@ -13,6 +14,8 @@ import java.io.IOException;
 import java.util.List;
 
 import static ec.com.jmgorduez.Bowling.dataGenarator.TestDataGenerator.*;
+import static ec.com.jmgorduez.Bowling.utils.Constants.BLANK_SPACE_STRING;
+import static ec.com.jmgorduez.Bowling.utils.Constants.STRIKE_FINAL_FRAME_STRING;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.when;
 
@@ -38,7 +41,7 @@ class BowlingLineScoreReaderTest {
     @Test
     void readBowlingLineScore() {
         try {
-            List<IFrame> frameList =generateFramesList12Strikes();
+            List<IFrame> frameList = generateFramesList12Strikes();
             BowlingLineScore bowlingLineScoreExpected = new BowlingLineScore();
             frameList.stream().forEach(frame -> bowlingLineScoreExpected.addFrame(frame));
             BowlingLineScore bowlingLineScoreCurrent
@@ -51,8 +54,15 @@ class BowlingLineScoreReaderTest {
     }
 
     @Test
-    void stringToFramesList(){
+    void stringToFramesList() {
         assertThat(bowlingLineScoreReaderUnderTest.stringToFramesList(STRING_LINE_12_STRIKES))
                 .isEqualTo(generateFramesList12Strikes());
+    }
+
+    @Test
+    void takeFinalFrameSection() {
+        assertThat(bowlingLineScoreReaderUnderTest
+                .takeFinalFrameSection(STRING_ARRAY_12_STRIKES))
+                .isEqualTo(STRIKE_FINAL_FRAME_STRING);
     }
 }
