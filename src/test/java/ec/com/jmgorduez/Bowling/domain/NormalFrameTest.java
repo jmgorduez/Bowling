@@ -1,11 +1,13 @@
 package ec.com.jmgorduez.Bowling.domain;
 
+import ec.com.jmgorduez.Bowling.domain.abstractions.IFrame;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.Optional;
+
 import static ec.com.jmgorduez.Bowling.dataGenarator.TestDataGenerator.*;
-import static ec.com.jmgorduez.Bowling.utils.Constants.FIVE;
-import static ec.com.jmgorduez.Bowling.utils.Constants.THREE;
+import static ec.com.jmgorduez.Bowling.utils.Constants.*;
 import static org.assertj.core.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 
@@ -14,7 +16,7 @@ class NormalFrameTest {
 
     @BeforeEach
     void setUp() {
-        this.normalFrameUnderTest = new NormalFrame(THREE, FIVE, ()->NORMAL_FRAME_4_5);
+        this.normalFrameUnderTest = new NormalFrame( THREE, FIVE, NORMAL_FRAME_4_5);
     }
 
     @Test
@@ -27,12 +29,6 @@ class NormalFrameTest {
     void getPointsSecondBall() {
         assertThat(normalFrameUnderTest.pointsSecondBall())
                 .isEqualTo(FIVE);
-    }
-
-    @Test
-    void getNextFrame() {
-        assertThat(normalFrameUnderTest.nextFrame().get())
-                .isEqualTo(NORMAL_FRAME_4_5);
     }
 
     @Test
@@ -49,7 +45,7 @@ class NormalFrameTest {
                 .isFalse();
         assertThat(normalFrameUnderTest.equals(new NormalFrame(THREE, FIVE, any())))
                 .isFalse();
-        assertThat(normalFrameUnderTest.equals(new NormalFrame(THREE, FIVE, ()->NORMAL_FRAME_4_5)))
+        assertThat(normalFrameUnderTest.equals(new NormalFrame(THREE, FIVE, NORMAL_FRAME_4_5)))
                 .isTrue();
     }
 }

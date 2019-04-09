@@ -5,8 +5,9 @@ import ec.com.jmgorduez.Bowling.domain.abstractions.IFrame;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
-import static ec.com.jmgorduez.Bowling.utils.Constants.ZERO;
+import static ec.com.jmgorduez.Bowling.utils.Constants.*;
 
 public class BowlingLineScore implements IBowlingLineScore {
     List<IFrame> frameList;
@@ -17,7 +18,8 @@ public class BowlingLineScore implements IBowlingLineScore {
 
     @Override
     public Integer getTotalScore() {
-        return frameList.stream().mapToInt(iFrame -> iFrame.totalPoints())
+        return frameList.stream()
+                .mapToInt(iFrame -> iFrame.totalPoints())
                 .sum();
     }
 
@@ -28,5 +30,19 @@ public class BowlingLineScore implements IBowlingLineScore {
 
     boolean isNotEmptyFramesList() {
         return !frameList.isEmpty();
+    }
+
+    public boolean equals(Object other) {
+        if (this == other) {
+            return true;
+        }
+        if (other == null){
+            return false;
+        }
+        if (!(other instanceof BowlingLineScore)) {
+            return false;
+        }
+        return this.getTotalScore().equals(((BowlingLineScore) other).getTotalScore())
+                && this.frameList.equals(((BowlingLineScore) other).frameList);
     }
 }

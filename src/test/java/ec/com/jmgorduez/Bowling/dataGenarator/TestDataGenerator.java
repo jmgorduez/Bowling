@@ -15,8 +15,10 @@ import static ec.com.jmgorduez.Bowling.utils.Constants.*;
 import static org.mockito.ArgumentMatchers.any;
 
 public class TestDataGenerator {
-    public static final NormalFrame NORMAL_FRAME_4_5 = new NormalFrame(FOUR, FIVE, any());
-    public static final NormalFrame NORMAL_FRAME_4_4 = new NormalFrame(FOUR, FOUR, any());
+
+    public static final NormalFrame NORMAL_FRAME_4_4 = new NormalFrame(FOUR, FOUR, null);
+    public static final NormalFrame NORMAL_FRAME_4_5 = new NormalFrame(FOUR, FIVE, NORMAL_FRAME_4_4);
+    public static final StrikeFrame STRIKE_FRAME = new StrikeFrame(NORMAL_FRAME_4_5);
 
     public static final Integer THREE_HUNDRED = 300;
     public static final Integer NINETY = 90;
@@ -26,33 +28,36 @@ public class TestDataGenerator {
 
     public static List<IFrame> generateFramesList12Strikes() {
         List<IFrame> frameList = new ArrayList<>();
-        FinalFrame finalFrame = new FinalFrame(TEN, TEN, TEN);
-        frameList.add(finalFrame);
-        for (int i = 0; i < 9; i++) {
-            StrikeFrame strikeFrame = new StrikeFrame(() -> frameList.get(ZERO));
+        IFrame nextFrame = new FinalFrame(TEN, TEN, TEN);
+        frameList.add(nextFrame);
+        for (int i = ZERO; i < NINE; i++) {
+            StrikeFrame strikeFrame = new StrikeFrame(nextFrame);
             frameList.add(ZERO, strikeFrame);
+            nextFrame = strikeFrame;
         }
         return frameList;
     }
 
     public static List<IFrame> generateFramesList10PairsOf9AndMiss() {
         List<IFrame> frameList = new ArrayList<>();
-        FinalFrame finalFrame = new FinalFrame(NINE, ZERO, ZERO);
-        frameList.add(finalFrame);
-        for (int i = 0; i < 9; i++) {
-            NormalFrame normalFrame = new NormalFrame(NINE, ZERO,() -> frameList.get(ZERO));
+        IFrame nextFrame = new FinalFrame(NINE, ZERO, ZERO);
+        frameList.add(nextFrame);
+        for (int i = ZERO; i < NINE; i++) {
+            NormalFrame normalFrame = new NormalFrame(NINE, ZERO, nextFrame);
             frameList.add(ZERO, normalFrame);
+            nextFrame = normalFrame;
         }
         return frameList;
     }
 
     public static List<IFrame> generateFramesList10PairsOf5AndSpareWithAFinal5() {
         List<IFrame> frameList = new ArrayList<>();
-        FinalFrame finalFrame = new FinalFrame(FIVE, FIVE, FIVE);
-        frameList.add(finalFrame);
-        for (int i = 0; i < 9; i++) {
-            SpareFrame normalFrame = new SpareFrame(FIVE, FIVE, () -> frameList.get(ZERO));
+        IFrame nextFrame = new FinalFrame(FIVE, FIVE, FIVE);
+        frameList.add(nextFrame);
+        for (int i = ZERO; i < NINE; i++) {
+            SpareFrame normalFrame = new SpareFrame(FIVE, FIVE, nextFrame);
             frameList.add(ZERO, normalFrame);
+            nextFrame = normalFrame;
         }
         return frameList;
     }

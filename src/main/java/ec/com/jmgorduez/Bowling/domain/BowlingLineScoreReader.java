@@ -21,11 +21,16 @@ public class BowlingLineScoreReader implements IBowlingLineScoreReader {
         String line = bufferedReader.readLine();
         String[] framesString = line.split(BLANK_SPACE_STRING);
         List<IFrame> frameList = new ArrayList<>();
-        frameList.add(stringToFinalStrikeFrame());
-        int count = NINE;
-        /*do {
-        } while (frameList.size() != TEN);*/
+        IFrame nextFrame = stringToFinalStrikeFrame();
+        frameList.add(nextFrame);
+        int count = EIGHT;
+        do {
+            nextFrame = stringToFrame(framesString[count], nextFrame);
+            frameList.add(ZERO, nextFrame);
+            count--;
+        } while (frameList.size() != TEN);
         IBowlingLineScore bowlingLineScore = new BowlingLineScore();
+        frameList.stream().forEach(frame -> bowlingLineScore.addFrame(frame));
         return bowlingLineScore;
     }
 
@@ -33,7 +38,7 @@ public class BowlingLineScoreReader implements IBowlingLineScoreReader {
         return new FinalFrame(TEN, TEN, TEN);
     }
 
-    IFrame stringToFrame(String frameString, Supplier<IFrame> nextFrame) {
+    IFrame stringToFrame(String frameString, IFrame nextFrame) {
         switch (frameString) {
             case STRIKE_FRAME_STRING:
                 return new StrikeFrame(nextFrame);

@@ -3,6 +3,8 @@ package ec.com.jmgorduez.Bowling.domain;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.Optional;
+
 import static ec.com.jmgorduez.Bowling.dataGenarator.TestDataGenerator.NORMAL_FRAME_4_5;
 import static ec.com.jmgorduez.Bowling.utils.Constants.*;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -14,7 +16,7 @@ class StrikeFrameTest {
 
     @BeforeEach
     void setUp() {
-        this.strikeFrameUnderTest = new StrikeFrame(() -> NORMAL_FRAME_4_5);
+        this.strikeFrameUnderTest = new StrikeFrame(NORMAL_FRAME_4_5);
     }
 
     @Test
@@ -32,9 +34,15 @@ class StrikeFrameTest {
     }
 
     @Test
-    void nextFrame() {
-        assertThat(strikeFrameUnderTest.nextFrame().get())
-                .isEqualTo(NORMAL_FRAME_4_5);
+    void getBonusForStrike() {
+        assertThat(strikeFrameUnderTest.bonusForStrike())
+                .isEqualTo(TEN + FOUR);
+    }
+
+    @Test
+    void getBonusForSpare() {
+        assertThat(strikeFrameUnderTest.bonusForSpare())
+                .isEqualTo(TEN);
     }
 
     @Test
@@ -51,7 +59,7 @@ class StrikeFrameTest {
                 .isFalse();
         assertThat(strikeFrameUnderTest.equals(new StrikeFrame(any())))
                 .isFalse();
-        assertThat(strikeFrameUnderTest.equals(new StrikeFrame(()->NORMAL_FRAME_4_5)))
+        assertThat(strikeFrameUnderTest.equals(new StrikeFrame(NORMAL_FRAME_4_5)))
                 .isTrue();
     }
 }

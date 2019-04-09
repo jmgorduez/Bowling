@@ -1,5 +1,7 @@
 package ec.com.jmgorduez.Bowling.domain;
 
+import ec.com.jmgorduez.Bowling.domain.abstractions.IBowlingLineScore;
+import ec.com.jmgorduez.Bowling.domain.abstractions.IFrame;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
@@ -8,10 +10,13 @@ import org.mockito.MockitoAnnotations;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.util.List;
 
-import static ec.com.jmgorduez.Bowling.dataGenarator.TestDataGenerator.STRING_LINE_12_STRIKES;
-import static ec.com.jmgorduez.Bowling.dataGenarator.TestDataGenerator.generateFramesList12Strikes;
+import static ec.com.jmgorduez.Bowling.dataGenarator.TestDataGenerator.*;
+import static ec.com.jmgorduez.Bowling.utils.Constants.FIVE;
+import static ec.com.jmgorduez.Bowling.utils.Constants.THREE;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
 @TestInstance(value = TestInstance.Lifecycle.PER_CLASS)
@@ -34,10 +39,14 @@ class BowlingLineScoreReaderTest {
     }
 
     @Test
-    void readScoreBowlingGame() {
+    void readBowlingLineScore() {
         try {
-            assertThat(bowlingLineScoreReaderUnderTest.readBowlingLineScore(bufferedReaderMock))
-                    .isEqualTo(generateFramesList12Strikes());
+            List<IFrame> frameList =generateFramesList12Strikes();
+            BowlingLineScore bowlingLineScoreExpected = new BowlingLineScore();
+            frameList.stream().forEach(frame -> bowlingLineScoreExpected.addFrame(frame));
+            BowlingLineScore bowlingLineScoreCurrent = (BowlingLineScore) bowlingLineScoreReaderUnderTest.readBowlingLineScore(bufferedReaderMock);
+            assertThat(bowlingLineScoreCurrent)
+                    .isEqualTo(bowlingLineScoreExpected);
         } catch (IOException e) {
             e.printStackTrace();
         }
