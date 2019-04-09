@@ -3,14 +3,11 @@ package ec.com.jmgorduez.Bowling.domain;
 import ec.com.jmgorduez.Bowling.domain.abstractions.IBowlingLineScore;
 import ec.com.jmgorduez.Bowling.domain.abstractions.IBowlingLineScoreReader;
 import ec.com.jmgorduez.Bowling.domain.abstractions.IFrame;
-import ec.com.jmgorduez.Bowling.utils.Constants;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.function.Supplier;
 
 import static ec.com.jmgorduez.Bowling.utils.Constants.*;
 
@@ -28,7 +25,7 @@ public class BowlingLineScoreReader implements IBowlingLineScoreReader {
     List<IFrame> stringToFramesList(String line) {
         String[] framesString = line.split(BLANK_SPACE_STRING);
         List<IFrame> frameList = new ArrayList<>();
-        IFrame nextFrame = stringToFinalStrikeFrame();
+        IFrame nextFrame = stringArrayToFinalFrame();
         frameList.add(nextFrame);
         int count = EIGHT;
         do {
@@ -39,7 +36,7 @@ public class BowlingLineScoreReader implements IBowlingLineScoreReader {
         return frameList;
     }
 
-    IFrame stringToFinalStrikeFrame() {
+    IFrame stringArrayToFinalFrame() {
         return new FinalFrame(TEN, TEN, TEN);
     }
 
