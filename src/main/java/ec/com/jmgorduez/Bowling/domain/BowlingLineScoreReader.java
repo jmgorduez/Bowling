@@ -28,12 +28,12 @@ public class BowlingLineScoreReader implements IBowlingLineScoreReader {
     List<IFrame> stringToFramesList(String line) {
         String[] framesString = line.split(BLANK_SPACE_STRING);
         List<IFrame> frameList = new ArrayList<>();
-        IFrame currentFrame = takeFinalFrame(framesString);
-        frameList.add(currentFrame);
+        IFrame lastFrame = takeFinalFrame(framesString);
+        frameList.add(lastFrame);
         int count = EIGHT;
         do {
-            currentFrame = stringToFrame(framesString[count], currentFrame);
-            frameList.add(ZERO, currentFrame);
+            lastFrame = stringToFrame(framesString[count], lastFrame);
+            frameList.add(ZERO, lastFrame);
             count--;
         } while (frameList.size() != TEN);
         return frameList;
