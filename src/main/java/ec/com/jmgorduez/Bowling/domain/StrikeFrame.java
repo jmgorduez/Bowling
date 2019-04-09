@@ -15,11 +15,6 @@ public class StrikeFrame extends AbstractFrame {
     }
 
     @Override
-    public Integer bonusForStrike() {
-        return pointsFirstBall + nextFrame().get().pointsFirstBall();
-    }
-
-    @Override
     public Integer totalPoints() {
         return super.totalPoints() + nextFrame().get().pointsFirstBall() + nextFrame().get().pointsSecondBall();
     }

@@ -7,10 +7,6 @@ public interface IFrame {
 
     Integer pointsSecondBall();
 
-    Integer bonusForStrike();
-
-    Integer bonusForSpare();
-
     Optional<IFrame> nextFrame();
 
     Integer totalPoints();

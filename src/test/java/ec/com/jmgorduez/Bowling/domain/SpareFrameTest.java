@@ -29,18 +29,6 @@ class SpareFrameTest {
     }
 
     @Test
-    void bonusForStrike() {
-        assertThat(spareFrameUnderTest.bonusForStrike())
-                .isEqualTo(SEVEN + THREE);
-    }
-
-    @Test
-    void bonusForSpare() {
-        assertThat(spareFrameUnderTest.bonusForSpare())
-                .isEqualTo(SEVEN);
-    }
-
-    @Test
     void nextFrame() {
         assertThat(spareFrameUnderTest.nextFrame().get())
                 .isEqualTo(NORMAL_FRAME_4_5);

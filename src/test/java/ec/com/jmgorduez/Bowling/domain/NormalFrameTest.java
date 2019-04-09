@@ -30,18 +30,6 @@ class NormalFrameTest {
     }
 
     @Test
-    void getBonusForStrike() {
-        assertThat(normalFrameUnderTest.bonusForStrike())
-                .isEqualTo(THREE + FIVE);
-    }
-
-    @Test
-    void getBonusForSpare() {
-        assertThat(normalFrameUnderTest.bonusForSpare())
-                .isEqualTo(THREE);
-    }
-
-    @Test
     void getNextFrame() {
         assertThat(normalFrameUnderTest.nextFrame().get())
                 .isEqualTo(NORMAL_FRAME_4_5);

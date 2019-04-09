@@ -32,18 +32,6 @@ class StrikeFrameTest {
     }
 
     @Test
-    void getBonusForStrike() {
-        assertThat(strikeFrameUnderTest.bonusForStrike())
-                .isEqualTo(TEN + FOUR);
-    }
-
-    @Test
-    void getBonusForSpare() {
-        assertThat(strikeFrameUnderTest.bonusForSpare())
-                .isEqualTo(TEN);
-    }
-
-    @Test
     void nextFrame() {
         assertThat(strikeFrameUnderTest.nextFrame().get())
                 .isEqualTo(NORMAL_FRAME_4_5);
