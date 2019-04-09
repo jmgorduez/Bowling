@@ -21,6 +21,7 @@ public class Constants {
     public static final String STRIKE_FINAL_FRAME_STRING = "XXX";
 
     public static final Character CHARACTER_MISS = '-';
+    public static final Character CHARACTER_STRIKE = 'X';
 
     public static final FinalFrame STRIKE_FINAL_FRAME = new FinalFrame(TEN, TEN, TEN);
 }

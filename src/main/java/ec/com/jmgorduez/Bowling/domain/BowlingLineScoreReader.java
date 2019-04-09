@@ -55,9 +55,6 @@ public class BowlingLineScoreReader implements IBowlingLineScoreReader {
 
     FinalFrame takeFinalFrame(String[] frames) {
         String finalFrameSection = takeFinalFrameSection(frames);
-        if (isAStrikeFinalFrame(finalFrameSection)) {
-            return STRIKE_FINAL_FRAME;
-        }
         return mapFinalFrameSectionToFinalSection(
                 finalFrameSection.chars()
                         .mapToObj(value -> (char) value)
@@ -75,10 +72,17 @@ public class BowlingLineScoreReader implements IBowlingLineScoreReader {
         if (Character.isDigit(value)) {
             return Character.getNumericValue(value);
         }
+        if(isAStrikeValue(value)){
+            return TEN;
+        }
         if (isAMissValue(value)) {
             return ZERO;
         }
         return getRemainder(finalFrameSection, value);
+    }
+
+    boolean isAStrikeValue(char value) {
+        return CHARACTER_STRIKE.equals(value);
     }
 
     boolean isAMissValue(char value) {
@@ -88,10 +92,6 @@ public class BowlingLineScoreReader implements IBowlingLineScoreReader {
     Integer getRemainder(String finalFrameSection, char value) {
         int index = finalFrameSection.indexOf(value);
         return TEN - new Integer(finalFrameSection.charAt(index - ONE));
-    }
-
-    boolean isAStrikeFinalFrame(String finalframeSection) {
-        return STRIKE_FINAL_FRAME_STRING.equals(finalframeSection);
     }
 
     IFrame stringToFrame(String frameString, IFrame nextFrame) {
