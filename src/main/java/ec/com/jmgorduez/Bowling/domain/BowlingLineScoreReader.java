@@ -36,7 +36,10 @@ public class BowlingLineScoreReader implements IBowlingLineScoreReader {
         return frameList;
     }
 
-    String[] takeFinalFrameSection(String[] frames){
+    String takeFinalFrameSection(String[] frames){
+        if(frames.length == TWELVE){
+            return STRIKE_FINAL_FRAME_STRING;
+        }
         return null;
     }
 

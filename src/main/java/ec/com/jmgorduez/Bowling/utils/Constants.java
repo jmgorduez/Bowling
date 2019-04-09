@@ -12,6 +12,7 @@ public class Constants {
     public static final Integer NINE = 9;
     public static final Integer ZERO = 0;
     public static final Integer TEN = 10;
+    public static final Integer TWELVE = 12;
 
     public static final String BLANK_SPACE_STRING = " ";
     public static final String STRIKE_FRAME_STRING = "X";
