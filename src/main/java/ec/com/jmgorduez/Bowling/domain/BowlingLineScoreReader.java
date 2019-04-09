@@ -48,7 +48,7 @@ public class BowlingLineScoreReader implements IBowlingLineScoreReader {
 
     String completeFinalCharacterIfItNeed(String finalFrameSection) {
         if (finalFrameSection.length() < THREE) {
-           return finalFrameSection.concat(CHARACTER_MISS.toString());
+            return finalFrameSection.concat(CHARACTER_MISS.toString());
         }
         return finalFrameSection;
     }
@@ -58,16 +58,22 @@ public class BowlingLineScoreReader implements IBowlingLineScoreReader {
         if (isAStrikeFinalFrame(finalFrameSection)) {
             return STRIKE_FINAL_FRAME;
         }
-        finalFrameSection.chars()
-                .mapToObj(value -> (char) value)
-                .map(character -> mapCharToInteger(character, finalFrameSection))
-                .collect(Collectors.toList());
-        return null;
+        return mapFinalFrameSectionToFinalSection(
+                finalFrameSection.chars()
+                        .mapToObj(value -> (char) value)
+                        .map(character -> mapCharToInteger(character, finalFrameSection))
+                        .collect(Collectors.toList()));
+    }
+
+    FinalFrame mapFinalFrameSectionToFinalSection(List<Integer> finalFrameSection) {
+        return new FinalFrame(finalFrameSection.get(ZERO),
+                finalFrameSection.get(ONE),
+                finalFrameSection.get(TWO));
     }
 
     int mapCharToInteger(char value, String finalFrameSection) {
         if (Character.isDigit(value)) {
-            return value;
+            return Character.getNumericValue(value);
         }
         if (isAMissValue(value)) {
             return ZERO;
