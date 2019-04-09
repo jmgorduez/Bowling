@@ -26,7 +26,7 @@ public class TestDataGenerator {
     public static final Integer ONE_HUNDRED_FIFTY = 150;
 
     public static final String STRING_LINE_12_STRIKES = "X X X X X X X X X X X X";
-    public static final String STRING_LINE_10_PAIRS_OF_9_AND_MISS = "X X X X X X X X X X X X";
+    public static final String STRING_LINE_10_PAIRS_OF_9_AND_MISS = "9- 9- 9- 9- 9- 9- 9- 9- 9- 9-";
 
     public static final String FINAL_FRAME_10_PAIRS_OF_9_AND_MISS_STRING = "9-";
 

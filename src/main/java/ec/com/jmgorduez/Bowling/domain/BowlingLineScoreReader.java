@@ -7,7 +7,9 @@ import ec.com.jmgorduez.Bowling.domain.abstractions.IFrame;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static ec.com.jmgorduez.Bowling.utils.Constants.*;
 
@@ -25,26 +27,20 @@ public class BowlingLineScoreReader implements IBowlingLineScoreReader {
     List<IFrame> stringToFramesList(String line) {
         String[] framesString = line.split(BLANK_SPACE_STRING);
         List<IFrame> frameList = new ArrayList<>();
-        IFrame nextFrame = takeFinalFrame(framesString);
-        frameList.add(nextFrame);
+        IFrame currentFrame = takeFinalFrame(framesString);
+        frameList.add(currentFrame);
         int count = EIGHT;
         do {
-            nextFrame = stringToFrame(framesString[count], nextFrame);
-            frameList.add(ZERO, nextFrame);
+            currentFrame = stringToFrame(framesString[count], currentFrame);
+            frameList.add(ZERO, currentFrame);
             count--;
         } while (frameList.size() != TEN);
         return frameList;
     }
 
     String takeFinalFrameSection(String[] frames){
-        if(isStrikeFinalFrame(frames)){
-            return STRIKE_FINAL_FRAME_STRING;
-        }
-        return null;
-    }
-
-    boolean isStrikeFinalFrame(String[] frames) {
-        return frames.length == TWELVE;
+        String[] finalFrameSection = Arrays.copyOfRange(frames, NINE, frames.length);
+        return Arrays.stream(finalFrameSection).collect(Collectors.joining());
     }
 
     FinalFrame takeFinalFrame(String[] frames) {
