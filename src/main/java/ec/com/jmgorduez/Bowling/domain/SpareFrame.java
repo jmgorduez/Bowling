@@ -14,6 +14,6 @@ public class SpareFrame extends AbstractFrame {
 
     @Override
     public Integer totalPoints() {
-        return super.totalPoints() + nextFrame.pointsFirstBall();
+        return super.totalPoints() + nextFrame.bonusForSpare();
     }
 }

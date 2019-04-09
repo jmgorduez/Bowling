@@ -13,10 +13,7 @@ import java.io.IOException;
 import java.util.List;
 
 import static ec.com.jmgorduez.Bowling.dataGenarator.TestDataGenerator.*;
-import static ec.com.jmgorduez.Bowling.utils.Constants.FIVE;
-import static ec.com.jmgorduez.Bowling.utils.Constants.THREE;
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
 @TestInstance(value = TestInstance.Lifecycle.PER_CLASS)
