@@ -52,6 +52,7 @@ class BowlingLineScoreReaderTest {
 
     @Test
     void stringToFramesList(){
-
+        assertThat(bowlingLineScoreReaderUnderTest.stringToFramesList(STRING_LINE_12_STRIKES))
+                .isEqualTo(generateFramesList12Strikes());
     }
 }
