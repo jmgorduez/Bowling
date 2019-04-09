@@ -67,7 +67,7 @@ class BowlingLineScoreReaderTest {
 
         assertThat(bowlingLineScoreReaderUnderTest
                 .takeFinalFrameSection(STRING_ARRAY_10_PAIRS_OF_9_AND_MISS))
-                .isEqualTo(FINAL_FRAME_10_PAIRS_OF_9_AND_MISS_STRING);
+                .isEqualTo(FINAL_FRAME_10_PAIRS_OF_9_AND_MISS_MISS_STRING);
     }
 
     @Test
