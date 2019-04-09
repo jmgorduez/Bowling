@@ -36,4 +36,16 @@ class SpareFrameTest {
         assertThat(spareFrameUnderTest.totalPoints())
                 .isEqualTo(TEN + FOUR);
     }
+
+    @Test
+    void equals(){
+        assertThat(spareFrameUnderTest.equals(spareFrameUnderTest))
+                .isTrue();
+        assertThat(spareFrameUnderTest.equals(this))
+                .isFalse();
+        assertThat(spareFrameUnderTest.equals(new SpareFrame(SEVEN, THREE, any())))
+                .isFalse();
+        assertThat(spareFrameUnderTest.equals(new SpareFrame(SEVEN, THREE, NORMAL_FRAME_4_5)))
+                .isTrue();
+    }
 }

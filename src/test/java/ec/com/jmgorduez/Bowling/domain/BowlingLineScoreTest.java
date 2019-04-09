@@ -81,8 +81,16 @@ class BowlingLineScoreTest {
                 .isFalse();
         assertThat(bowlingLineScoreUnderTest.equals(new BowlingLineScore()))
                 .isTrue();
+        List<IFrame> frameList = generateFramesList12Strikes();
+        BowlingLineScore bowlingLineScoreToCompare = new BowlingLineScore();
+        frameList.stream().forEach(frame -> {
+            bowlingLineScoreUnderTest.addFrame(frame);
+            bowlingLineScoreToCompare.addFrame(frame);
+        });
+        assertThat(bowlingLineScoreUnderTest.equals(bowlingLineScoreToCompare))
+                .isTrue();
         bowlingLineScoreUnderTest.addFrame(STRIKE_FRAME);
-        assertThat(bowlingLineScoreUnderTest.equals(new BowlingLineScore()))
+        assertThat(bowlingLineScoreUnderTest.equals(bowlingLineScoreToCompare))
                 .isFalse();
     }
 }

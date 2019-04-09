@@ -16,4 +16,17 @@ public class SpareFrame extends AbstractFrame {
     public Integer totalPoints() {
         return super.totalPoints() + nextFrame.bonusForSpare();
     }
+
+    @Override
+    public boolean equals(Object other) {
+        if (this == other) {
+            return true;
+        }
+        if (!(other instanceof SpareFrame)) {
+            return false;
+        }
+        return this.pointsFirstBall().equals(((SpareFrame)other).pointsFirstBall())
+                && this.pointsSecondBall().equals(((SpareFrame)other).pointsSecondBall())
+                && this.nextFrame().equals(((SpareFrame)other).nextFrame());
+    }
 }

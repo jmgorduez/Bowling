@@ -22,4 +22,18 @@ public class FinalFrame extends AbstractFrame {
     public Integer totalPoints() {
         return super.totalPoints() + pointsThirdBall;
     }
+
+    @Override
+    public boolean equals(Object other) {
+        if (this == other) {
+            return true;
+        }
+        if (!(other instanceof FinalFrame)) {
+            return false;
+        }
+        return this.pointsFirstBall().equals(((FinalFrame)other).pointsFirstBall())
+                && this.pointsSecondBall().equals(((FinalFrame)other).pointsSecondBall())
+                && this.pointsThirdBall.equals(((FinalFrame)other).pointsThirdBall)
+                && ((FinalFrame)other).nextFrame() == null;
+    }
 }

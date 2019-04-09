@@ -36,13 +36,9 @@ public class BowlingLineScore implements IBowlingLineScore {
         if (this == other) {
             return true;
         }
-        if (other == null){
-            return false;
-        }
         if (!(other instanceof BowlingLineScore)) {
             return false;
         }
-        return this.getTotalScore().equals(((BowlingLineScore) other).getTotalScore())
-                && this.frameList.equals(((BowlingLineScore) other).frameList);
+        return this.frameList.equals(((BowlingLineScore) other).frameList);
     }
 }

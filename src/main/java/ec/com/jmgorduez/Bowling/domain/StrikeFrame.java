@@ -25,4 +25,17 @@ public class StrikeFrame extends AbstractFrame {
         return super.totalPoints()
                 + nextFrame.bonusForStrike();
     }
+
+    @Override
+    public boolean equals(Object other) {
+        if (this == other) {
+            return true;
+        }
+        if (!(other instanceof StrikeFrame)) {
+            return false;
+        }
+        return this.pointsFirstBall().equals(((StrikeFrame)other).pointsFirstBall())
+                && this.pointsSecondBall().equals(((StrikeFrame)other).pointsSecondBall())
+                && this.nextFrame().equals(((StrikeFrame)other).nextFrame());
+    }
 }
