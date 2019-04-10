@@ -4,6 +4,10 @@ import ec.com.jmgorduez.Bowling.domain.FinalFrame;
 import ec.com.jmgorduez.Bowling.domain.abstractions.IFrame;
 
 public class Constants {
+
+    public static final String FILE_PATH = "C:\\Users\\JuanMa\\projects\\java\\Bowling\\inputFile\\";
+    //public static final String FILE_PATH = "/home/jm/projects/java/Bank-OCR/inputFiles/";
+
     public static final Integer ONE = 1;
     public static final Integer TWO = 2;
     public static final Integer THREE = 3;

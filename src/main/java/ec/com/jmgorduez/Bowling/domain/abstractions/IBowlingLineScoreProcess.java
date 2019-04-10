@@ -6,5 +6,6 @@ import java.util.function.Consumer;
 public interface IBowlingLineScoreProcess {
     void processBowlingLineScore(BufferedReader bufferedReader,
                                  IBowlingLineScoreReader bowlingLineScoreReader,
+                                 IFrameReader frameReader,
                                  Consumer<IBowlingLineScore> writeOutput);
 }
