@@ -104,13 +104,22 @@ public class BowlingLineScoreReader implements IBowlingLineScoreReader {
 
     IFrame stringToFrame(String frameString, IFrame nextFrame) {
         List<Integer> valuesOfFrame = mapStringFrameToValuesOfFrame(frameString);
-        if(isAStrike(valuesOfFrame)) {
+        if(isAStrikeFrame(valuesOfFrame)) {
             return new StrikeFrame(nextFrame);
+        }
+        if(isASpareFrame(valuesOfFrame)){
+            return new SpareFrame(valuesOfFrame.get(ZERO),
+                    valuesOfFrame.get(ONE),
+                    nextFrame);
         }
         return null;
     }
 
-    boolean isAStrike(List<Integer> valuesOfFrame) {
+    boolean isASpareFrame(List<Integer> valuesOfFrame) {
+        return valuesOfFrame.size() == TWO && valuesOfFrame.stream().mapToInt(Integer::intValue).sum() == TEN;
+    }
+
+    boolean isAStrikeFrame(List<Integer> valuesOfFrame) {
         return valuesOfFrame.size() == ONE && valuesOfFrame.get(ZERO).equals(TEN);
     }
 }

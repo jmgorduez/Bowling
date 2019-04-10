@@ -61,7 +61,7 @@ class BowlingLineScoreReaderTest {
     }
 
     @Test
-    void takeFinalFrameSection() {
+    void takeFinalFrameString() {
         assertThat(bowlingLineScoreReaderUnderTest
                 .takeFinalFrameString(STRING_ARRAY_12_STRIKES))
                 .isEqualTo(STRIKE_FINAL_FRAME_STRING);
