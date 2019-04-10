@@ -60,15 +60,15 @@ class BowlingLineScoreReaderTest {
     @Test
     void takeFinalFrameSection() {
         assertThat(bowlingLineScoreReaderUnderTest
-                .takeFinalFrameSection(STRING_ARRAY_12_STRIKES))
+                .takeFinalFrameString(STRING_ARRAY_12_STRIKES))
                 .isEqualTo(STRIKE_FINAL_FRAME_STRING);
 
         assertThat(bowlingLineScoreReaderUnderTest
-                .takeFinalFrameSection(STRING_ARRAY_10_PAIRS_OF_9_AND_MISS))
+                .takeFinalFrameString(STRING_ARRAY_10_PAIRS_OF_9_AND_MISS))
                 .isEqualTo(FINAL_FRAME_10_PAIRS_OF_9_AND_MISS_STRING_FILL);
 
         assertThat(bowlingLineScoreReaderUnderTest
-                .takeFinalFrameSection(STRING_ARRAY_10_PAIRS_OF_5_AND_SPARE_WITH_A_FINAL_5))
+                .takeFinalFrameString(STRING_ARRAY_10_PAIRS_OF_5_AND_SPARE_WITH_A_FINAL_5))
                 .isEqualTo(FINAL_FRAME_5_AND_SPARE_WITH_A_FINAL_5_STRING);
     }
 

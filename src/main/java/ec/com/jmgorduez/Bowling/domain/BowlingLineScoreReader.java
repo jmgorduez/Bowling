@@ -43,7 +43,7 @@ public class BowlingLineScoreReader implements IBowlingLineScoreReader {
         return frameList;
     }
 
-    String takeFinalFrameSection(String[] frames) {
+    String takeFinalFrameString(String[] frames) {
         String[] finalFrameSection = Arrays.copyOfRange(frames, NINE, frames.length);
         return completeFinalCharacterIfItNeed(
                 Arrays.stream(finalFrameSection)
@@ -58,15 +58,19 @@ public class BowlingLineScoreReader implements IBowlingLineScoreReader {
     }
 
     FinalFrame takeFinalFrame(String[] frames) {
-        String finalFrameSection = takeFinalFrameSection(frames);
-        return mapFinalFrameSectionToFinalSection(
-                finalFrameSection.chars()
-                        .mapToObj(value -> (char) value)
-                        .map(character -> mapCharToInteger(character, finalFrameSection))
-                        .collect(Collectors.toList()));
+        String finalFrameSection = takeFinalFrameString(frames);
+        return mapFinalValuesOfFrameToFinalFrame(
+                mapStringFrameToValuesOfFrame(finalFrameSection));
     }
 
-    FinalFrame mapFinalFrameSectionToFinalSection(List<Integer> finalFrameSection) {
+    List<Integer> mapStringFrameToValuesOfFrame(String finalFrameSection) {
+        return finalFrameSection.chars()
+                .mapToObj(value -> (char) value)
+                .map(character -> mapCharToInteger(character, finalFrameSection))
+                .collect(Collectors.toList());
+    }
+
+    FinalFrame mapFinalValuesOfFrameToFinalFrame(List<Integer> finalFrameSection) {
         return new FinalFrame(finalFrameSection.get(ZERO),
                 finalFrameSection.get(ONE),
                 finalFrameSection.get(TWO));
@@ -99,10 +103,14 @@ public class BowlingLineScoreReader implements IBowlingLineScoreReader {
     }
 
     IFrame stringToFrame(String frameString, IFrame nextFrame) {
-        switch (frameString) {
-            case STRIKE_FRAME_STRING:
-                return new StrikeFrame(nextFrame);
+        List<Integer> valuesOfFrame = mapStringFrameToValuesOfFrame(frameString);
+        if(isAStrike(valuesOfFrame)) {
+            return new StrikeFrame(nextFrame);
         }
         return null;
+    }
+
+    boolean isAStrike(List<Integer> valuesOfFrame) {
+        return valuesOfFrame.size() == ONE && valuesOfFrame.get(ZERO).equals(TEN);
     }
 }
