@@ -1,6 +1,7 @@
 package ec.com.jmgorduez.Bowling.utils;
 
 import ec.com.jmgorduez.Bowling.domain.FinalFrame;
+import ec.com.jmgorduez.Bowling.domain.abstractions.IFrame;
 
 public class Constants {
     public static final Integer ONE = 1;
@@ -23,4 +24,5 @@ public class Constants {
     public static final Character CHARACTER_STRIKE = 'X';
 
     public static final FinalFrame STRIKE_FINAL_FRAME = new FinalFrame(TEN, TEN, TEN);
+    public static final IFrame EMPTY_FRAME = null;
 }

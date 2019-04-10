@@ -37,7 +37,8 @@ public class BowlingLineScoreReader implements IBowlingLineScoreReader {
     List<IFrame> takeInitFrames(String[] framesString, IFrame lastFrame) {
         List<IFrame> frameList = new ArrayList<>();
         for (int index = EIGHT; frameList.size() != NINE; index--) {
-            lastFrame = stringToFrame(framesString[index], lastFrame);
+            List<Integer> valuesOfFrame = mapStringFrameToValuesOfFrame(framesString[index]);
+            lastFrame = mapListOfValuesFrameToFrame(valuesOfFrame, lastFrame);
             frameList.add(ZERO, lastFrame);
         }
         return frameList;
@@ -57,7 +58,7 @@ public class BowlingLineScoreReader implements IBowlingLineScoreReader {
         return finalFrameSection;
     }
 
-    FinalFrame takeFinalFrame(String[] frames) {
+    IFrame takeFinalFrame(String[] frames) {
         String finalFrameSection = takeFinalFrameString(frames);
         return mapFinalValuesOfFrameToFinalFrame(
                 mapStringFrameToValuesOfFrame(finalFrameSection));
@@ -70,10 +71,8 @@ public class BowlingLineScoreReader implements IBowlingLineScoreReader {
                 .collect(Collectors.toList());
     }
 
-    FinalFrame mapFinalValuesOfFrameToFinalFrame(List<Integer> finalFrameSection) {
-        return new FinalFrame(finalFrameSection.get(ZERO),
-                finalFrameSection.get(ONE),
-                finalFrameSection.get(TWO));
+    IFrame mapFinalValuesOfFrameToFinalFrame(List<Integer> finalFrameSection) {
+        return mapListOfValuesFrameToFrame(finalFrameSection, EMPTY_FRAME);
     }
 
     int mapCharToInteger(char value, String finalFrameSection) {
@@ -102,8 +101,11 @@ public class BowlingLineScoreReader implements IBowlingLineScoreReader {
         return TEN - Character.getNumericValue(finalFrameSection.charAt(index - ONE));
     }
 
-    IFrame stringToFrame(String frameString, IFrame nextFrame) {
-        List<Integer> valuesOfFrame = mapStringFrameToValuesOfFrame(frameString);
+    IFrame mapListOfValuesFrameToFrame(List<Integer> valuesOfFrame, IFrame nextFrame) {
+        if(isAFinalFrame(valuesOfFrame)){
+            return new FinalFrame(valuesOfFrame.get(ZERO),
+                    valuesOfFrame.get(ONE),valuesOfFrame.get(TWO));
+        }
         if (isAStrikeFrame(valuesOfFrame)) {
             return new StrikeFrame(nextFrame);
         }
@@ -113,6 +115,10 @@ public class BowlingLineScoreReader implements IBowlingLineScoreReader {
         }
         return new NormalFrame(valuesOfFrame.get(ZERO),
                 valuesOfFrame.get(ONE), nextFrame);
+    }
+
+    boolean isAFinalFrame(List<Integer> valuesOfFrame) {
+        return valuesOfFrame.size()== THREE;
     }
 
     boolean isASpareFrame(List<Integer> valuesOfFrame) {
