@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Optional;
 
+import static ec.com.jmgorduez.Bowling.dataGenarator.TestDataGenerator.EMPTY_FRAME;
 import static ec.com.jmgorduez.Bowling.dataGenarator.TestDataGenerator.NORMAL_FRAME_4_5;
 import static ec.com.jmgorduez.Bowling.utils.Constants.*;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -38,12 +39,12 @@ class SpareFrameTest {
     }
 
     @Test
-    void equals(){
+    void equals() {
         assertThat(spareFrameUnderTest.equals(spareFrameUnderTest))
                 .isTrue();
         assertThat(spareFrameUnderTest.equals(this))
                 .isFalse();
-        assertThat(spareFrameUnderTest.equals(new SpareFrame(SEVEN, THREE, any())))
+        assertThat(spareFrameUnderTest.equals(new SpareFrame(SEVEN, THREE, EMPTY_FRAME)))
                 .isFalse();
         assertThat(spareFrameUnderTest.equals(new SpareFrame(SEVEN, THREE, NORMAL_FRAME_4_5)))
                 .isTrue();

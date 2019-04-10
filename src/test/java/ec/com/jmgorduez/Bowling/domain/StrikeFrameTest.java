@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Optional;
 
+import static ec.com.jmgorduez.Bowling.dataGenarator.TestDataGenerator.EMPTY_FRAME;
 import static ec.com.jmgorduez.Bowling.dataGenarator.TestDataGenerator.NORMAL_FRAME_4_5;
 import static ec.com.jmgorduez.Bowling.utils.Constants.*;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -57,7 +58,7 @@ class StrikeFrameTest {
                 .isTrue();
         assertThat(strikeFrameUnderTest.equals(this))
                 .isFalse();
-        assertThat(strikeFrameUnderTest.equals(new StrikeFrame(any())))
+        assertThat(strikeFrameUnderTest.equals(new StrikeFrame(EMPTY_FRAME)))
                 .isFalse();
         assertThat(strikeFrameUnderTest.equals(new StrikeFrame(NORMAL_FRAME_4_5)))
                 .isTrue();

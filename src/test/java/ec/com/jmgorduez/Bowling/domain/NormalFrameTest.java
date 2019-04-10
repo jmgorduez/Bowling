@@ -3,6 +3,7 @@ package ec.com.jmgorduez.Bowling.domain;
 import ec.com.jmgorduez.Bowling.domain.abstractions.IFrame;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
 
 import java.util.Optional;
 
@@ -43,7 +44,7 @@ class NormalFrameTest {
                 .isTrue();
         assertThat(normalFrameUnderTest.equals(this))
                 .isFalse();
-        assertThat(normalFrameUnderTest.equals(new NormalFrame(THREE, FIVE, any())))
+        assertThat(normalFrameUnderTest.equals(new NormalFrame(THREE, FIVE, EMPTY_FRAME)))
                 .isFalse();
         assertThat(normalFrameUnderTest.equals(new NormalFrame(THREE, FIVE, NORMAL_FRAME_4_5)))
                 .isTrue();
