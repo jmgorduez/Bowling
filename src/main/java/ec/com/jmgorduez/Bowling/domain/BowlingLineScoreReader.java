@@ -111,7 +111,8 @@ public class BowlingLineScoreReader implements IBowlingLineScoreReader {
             return new SpareFrame(valuesOfFrame.get(ZERO),
                     valuesOfFrame.get(ONE), nextFrame);
         }
-        return null;
+        return new NormalFrame(valuesOfFrame.get(ZERO),
+                valuesOfFrame.get(ONE), nextFrame);
     }
 
     boolean isASpareFrame(List<Integer> valuesOfFrame) {
