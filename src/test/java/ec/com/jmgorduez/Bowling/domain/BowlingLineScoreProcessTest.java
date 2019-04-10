@@ -14,6 +14,7 @@ import java.io.FileReader;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import static ec.com.jmgorduez.Bowling.dataGenarator.TestDataGenerator.*;
 import static ec.com.jmgorduez.Bowling.utils.Constants.*;
@@ -54,7 +55,9 @@ class BowlingLineScoreProcessTest {
                 .isEqualTo(TWO);
     }
 
-    void writeOutput(IBowlingLineScore bowlingLineScore) {
-        bowlingScoresExpexted.add(bowlingLineScore.getTotalScore());
+    void writeOutput(Optional<IBowlingLineScore> bowlingLineScore) {
+        if(bowlingLineScore.isPresent()) {
+            bowlingScoresExpexted.add(bowlingLineScore.get().getTotalScore());
+        }
     }
 }
