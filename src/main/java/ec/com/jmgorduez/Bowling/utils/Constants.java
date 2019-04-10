@@ -18,7 +18,6 @@ public class Constants {
 
     public static final String BLANK_SPACE_STRING = " ";
     public static final String STRIKE_FRAME_STRING = "X";
-    public static final String STRIKE_FINAL_FRAME_STRING = "XXX";
 
     public static final Character CHARACTER_MISS = '-';
     public static final Character CHARACTER_STRIKE = 'X';

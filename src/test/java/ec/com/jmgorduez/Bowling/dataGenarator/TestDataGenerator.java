@@ -28,14 +28,20 @@ public class TestDataGenerator {
 
     public static final String STRING_LINE_12_STRIKES = "X X X X X X X X X X X X";
     public static final String STRING_LINE_10_PAIRS_OF_9_AND_MISS = "9- 9- 9- 9- 9- 9- 9- 9- 9- 9-";
+    public static final String STRING_LINE_10_PAIRS_OF_5_AND_SPARE_WITH_A_FINAL_5 = "5/ 5/ 5/ 5/ 5/ 5/ 5/ 5/ 5/ 5/5";
 
     public static final String FINAL_FRAME_10_PAIRS_OF_9_AND_MISS_STRING = "9-";
 
+    public static final String STRIKE_FINAL_FRAME_STRING = "XXX";
     public static final String FINAL_FRAME_10_PAIRS_OF_9_AND_MISS_STRING_FILL
             = FINAL_FRAME_10_PAIRS_OF_9_AND_MISS_STRING.concat(CHARACTER_MISS.toString());
+    public static final String FINAL_FRAME_5_AND_SPARE_WITH_A_FINAL_5_STRING = "5/5";
 
     public static final String[] STRING_ARRAY_12_STRIKES = STRING_LINE_12_STRIKES.split(BLANK_SPACE_STRING);
-    public static final String[] STRING_ARRAY_10_PAIRS_OF_9_AND_MISS = STRING_LINE_10_PAIRS_OF_9_AND_MISS.split(BLANK_SPACE_STRING);
+    public static final String[] STRING_ARRAY_10_PAIRS_OF_9_AND_MISS
+            = STRING_LINE_10_PAIRS_OF_9_AND_MISS.split(BLANK_SPACE_STRING);
+    public static final String[] STRING_ARRAY_10_PAIRS_OF_5_AND_SPARE_WITH_A_FINAL_5
+            = STRING_LINE_10_PAIRS_OF_5_AND_SPARE_WITH_A_FINAL_5.split(BLANK_SPACE_STRING);
 
     public static List<IFrame> generateFramesList12Strikes() {
         List<IFrame> frameList = new ArrayList<>();

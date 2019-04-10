@@ -66,6 +66,10 @@ class BowlingLineScoreReaderTest {
         assertThat(bowlingLineScoreReaderUnderTest
                 .takeFinalFrameSection(STRING_ARRAY_10_PAIRS_OF_9_AND_MISS))
                 .isEqualTo(FINAL_FRAME_10_PAIRS_OF_9_AND_MISS_STRING_FILL);
+
+        assertThat(bowlingLineScoreReaderUnderTest
+                .takeFinalFrameSection(STRING_ARRAY_10_PAIRS_OF_5_AND_SPARE_WITH_A_FINAL_5))
+                .isEqualTo(FINAL_FRAME_5_AND_SPARE_WITH_A_FINAL_5_STRING);
     }
 
     @Test
