@@ -91,7 +91,7 @@ public class BowlingLineScoreReader implements IBowlingLineScoreReader {
 
     Integer getRemainder(String finalFrameSection, char value) {
         int index = finalFrameSection.indexOf(value);
-        return TEN - new Integer(finalFrameSection.charAt(index - ONE));
+        return TEN - Character.getNumericValue(finalFrameSection.charAt(index - ONE));
     }
 
     IFrame stringToFrame(String frameString, IFrame nextFrame) {
