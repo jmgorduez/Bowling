@@ -34,9 +34,9 @@ public class BowlingLineScoreReader implements IBowlingLineScoreReader {
         return frameList;
     }
 
-    List<IFrame> takeInitFrames(String[] framesString , IFrame lastFrame) {
+    List<IFrame> takeInitFrames(String[] framesString, IFrame lastFrame) {
         List<IFrame> frameList = new ArrayList<>();
-        for (int index = EIGHT; frameList.size() != NINE  ; index--) {
+        for (int index = EIGHT; frameList.size() != NINE; index--) {
             lastFrame = stringToFrame(framesString[index], lastFrame);
             frameList.add(ZERO, lastFrame);
         }
@@ -80,7 +80,7 @@ public class BowlingLineScoreReader implements IBowlingLineScoreReader {
         if (Character.isDigit(value)) {
             return Character.getNumericValue(value);
         }
-        if(isAStrikeValue(value)){
+        if (isAStrikeValue(value)) {
             return TEN;
         }
         if (isAMissValue(value)) {
@@ -104,13 +104,12 @@ public class BowlingLineScoreReader implements IBowlingLineScoreReader {
 
     IFrame stringToFrame(String frameString, IFrame nextFrame) {
         List<Integer> valuesOfFrame = mapStringFrameToValuesOfFrame(frameString);
-        if(isAStrikeFrame(valuesOfFrame)) {
+        if (isAStrikeFrame(valuesOfFrame)) {
             return new StrikeFrame(nextFrame);
         }
-        if(isASpareFrame(valuesOfFrame)){
+        if (isASpareFrame(valuesOfFrame)) {
             return new SpareFrame(valuesOfFrame.get(ZERO),
-                    valuesOfFrame.get(ONE),
-                    nextFrame);
+                    valuesOfFrame.get(ONE), nextFrame);
         }
         return null;
     }

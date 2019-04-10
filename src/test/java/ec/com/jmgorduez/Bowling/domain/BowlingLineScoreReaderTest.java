@@ -58,6 +58,9 @@ class BowlingLineScoreReaderTest {
         assertThat(bowlingLineScoreReaderUnderTest
                 .stringToFramesList(STRING_LINE_10_PAIRS_OF_5_AND_SPARE_WITH_A_FINAL_5))
                 .isEqualTo(generateFramesList10PairsOf5AndSpareWithAFinal5());
+        assertThat(bowlingLineScoreReaderUnderTest
+                .stringToFramesList(STRING_LINE_10_PAIRS_OF_9_AND_MISS))
+                .isEqualTo(generateFramesList10PairsOf9AndMiss());
     }
 
     @Test
