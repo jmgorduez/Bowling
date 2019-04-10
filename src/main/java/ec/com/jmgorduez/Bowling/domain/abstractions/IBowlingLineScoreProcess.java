@@ -4,7 +4,7 @@ import java.io.BufferedReader;
 import java.util.function.Consumer;
 
 public interface IBowlingLineScoreProcess {
-    Integer processBowlingLineScore(BufferedReader bufferedReader,
+    void processBowlingLineScore(BufferedReader bufferedReader,
                                  IBowlingLineScoreReader bowlingLineScoreReader,
                                  Consumer<IBowlingLineScore> writeOutput);
 }
