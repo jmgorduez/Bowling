@@ -1,14 +1,17 @@
-package ec.com.jmgorduez.Bowling.domain;
+package ec.com.jmgorduez.Bowling.domain.readers;
 
+import ec.com.jmgorduez.Bowling.domain.BowlingLineScore;
 import ec.com.jmgorduez.Bowling.domain.abstractions.IBowlingLineScore;
 import ec.com.jmgorduez.Bowling.domain.abstractions.IBowlingLineScoreReader;
 import ec.com.jmgorduez.Bowling.domain.abstractions.IFrame;
+import ec.com.jmgorduez.Bowling.domain.abstractions.IFrameReader;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
 import static ec.com.jmgorduez.Bowling.utils.Constants.*;
@@ -16,29 +19,30 @@ import static ec.com.jmgorduez.Bowling.utils.Constants.*;
 public class BowlingLineScoreReader implements IBowlingLineScoreReader {
 
     @Override
-    public IBowlingLineScore readBowlingLineScore(BufferedReader bufferedReader)
+    public IBowlingLineScore readBowlingLineScore(BufferedReader bufferedReader,
+                                                  IFrameReader frameReader)
             throws IOException {
         String line = bufferedReader.readLine();
-        List<IFrame> frameList = stringToFramesList(line);
+        List<IFrame> frameList = stringToFramesList(line, frameReader);
         IBowlingLineScore bowlingLineScore = new BowlingLineScore();
         frameList.stream().forEach(frame -> bowlingLineScore.addFrame(frame));
         return bowlingLineScore;
     }
 
-    List<IFrame> stringToFramesList(String line) {
+    List<IFrame> stringToFramesList(String line, IFrameReader frameReader) {
         String[] framesString = line.split(BLANK_SPACE_STRING);
         List<IFrame> frameList = new ArrayList<>();
-        IFrame finalFrame = takeFinalFrame(framesString);
-        frameList.addAll(takeInitFrames(framesString, finalFrame));
+        IFrame finalFrame = takeFinalFrame(framesString, frameReader);
+        frameList.addAll(takeInitFrames(framesString, finalFrame, frameReader));
         frameList.add(finalFrame);
         return frameList;
     }
 
-    List<IFrame> takeInitFrames(String[] framesString, IFrame lastFrame) {
+    List<IFrame> takeInitFrames(String[] framesString, IFrame lastFrame, IFrameReader frameReader) {
         List<IFrame> frameList = new ArrayList<>();
         for (int index = EIGHT; frameList.size() != NINE; index--) {
             List<Integer> valuesOfFrame = mapStringFrameToValuesOfFrame(framesString[index]);
-            lastFrame = mapListOfValuesFrameToFrame(valuesOfFrame, lastFrame);
+            lastFrame = frameReader.readFrame(valuesOfFrame, lastFrame);
             frameList.add(ZERO, lastFrame);
         }
         return frameList;
@@ -58,10 +62,10 @@ public class BowlingLineScoreReader implements IBowlingLineScoreReader {
         return finalFrameSection;
     }
 
-    IFrame takeFinalFrame(String[] frames) {
+    IFrame takeFinalFrame(String[] frames, IFrameReader frameReader) {
         String finalFrameSection = takeFinalFrameString(frames);
         return mapFinalValuesOfFrameToFinalFrame(
-                mapStringFrameToValuesOfFrame(finalFrameSection));
+                mapStringFrameToValuesOfFrame(finalFrameSection),frameReader);
     }
 
     List<Integer> mapStringFrameToValuesOfFrame(String finalFrameSection) {
@@ -71,8 +75,8 @@ public class BowlingLineScoreReader implements IBowlingLineScoreReader {
                 .collect(Collectors.toList());
     }
 
-    IFrame mapFinalValuesOfFrameToFinalFrame(List<Integer> finalFrameSection) {
-        return mapListOfValuesFrameToFrame(finalFrameSection, EMPTY_FRAME);
+    IFrame mapFinalValuesOfFrameToFinalFrame(List<Integer> finalFrameSection, IFrameReader frameReader) {
+        return frameReader.readFrame(finalFrameSection, EMPTY_FRAME);
     }
 
     int mapCharToInteger(char value, String finalFrameSection) {
@@ -99,33 +103,5 @@ public class BowlingLineScoreReader implements IBowlingLineScoreReader {
     Integer getRemainder(String finalFrameSection, char value) {
         int index = finalFrameSection.indexOf(value);
         return TEN - Character.getNumericValue(finalFrameSection.charAt(index - ONE));
-    }
-
-    IFrame mapListOfValuesFrameToFrame(List<Integer> valuesOfFrame, IFrame nextFrame) {
-        if(isAFinalFrame(valuesOfFrame)){
-            return new FinalFrame(valuesOfFrame.get(ZERO),
-                    valuesOfFrame.get(ONE),valuesOfFrame.get(TWO));
-        }
-        if (isAStrikeFrame(valuesOfFrame)) {
-            return new StrikeFrame(nextFrame);
-        }
-        if (isASpareFrame(valuesOfFrame)) {
-            return new SpareFrame(valuesOfFrame.get(ZERO),
-                    valuesOfFrame.get(ONE), nextFrame);
-        }
-        return new NormalFrame(valuesOfFrame.get(ZERO),
-                valuesOfFrame.get(ONE), nextFrame);
-    }
-
-    boolean isAFinalFrame(List<Integer> valuesOfFrame) {
-        return valuesOfFrame.size()== THREE;
-    }
-
-    boolean isASpareFrame(List<Integer> valuesOfFrame) {
-        return valuesOfFrame.size() == TWO && valuesOfFrame.stream().mapToInt(Integer::intValue).sum() == TEN;
-    }
-
-    boolean isAStrikeFrame(List<Integer> valuesOfFrame) {
-        return valuesOfFrame.size() == ONE && valuesOfFrame.get(ZERO).equals(TEN);
     }
 }

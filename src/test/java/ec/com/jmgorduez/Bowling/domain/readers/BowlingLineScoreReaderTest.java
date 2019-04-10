@@ -1,6 +1,8 @@
-package ec.com.jmgorduez.Bowling.domain;
+package ec.com.jmgorduez.Bowling.domain.readers;
 
+import ec.com.jmgorduez.Bowling.domain.BowlingLineScore;
 import ec.com.jmgorduez.Bowling.domain.abstractions.IFrame;
+import ec.com.jmgorduez.Bowling.domain.abstractions.IFrameReader;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
@@ -22,6 +24,7 @@ class BowlingLineScoreReaderTest {
     private BowlingLineScoreReader bowlingLineScoreReaderUnderTest;
     @Mock
     private BufferedReader bufferedReaderMock;
+    private IFrameReader frameReader = new FrameReader();
 
     @BeforeEach
     void setUp() {
@@ -42,7 +45,7 @@ class BowlingLineScoreReaderTest {
             BowlingLineScore bowlingLineScoreExpected = new BowlingLineScore();
             frameList.stream().forEach(frame -> bowlingLineScoreExpected.addFrame(frame));
             BowlingLineScore bowlingLineScoreCurrent
-                    = (BowlingLineScore) bowlingLineScoreReaderUnderTest.readBowlingLineScore(bufferedReaderMock);
+                    = (BowlingLineScore) bowlingLineScoreReaderUnderTest.readBowlingLineScore(bufferedReaderMock, frameReader);
             assertThat(bowlingLineScoreCurrent)
                     .isEqualTo(bowlingLineScoreExpected);
         } catch (IOException e) {
@@ -53,13 +56,13 @@ class BowlingLineScoreReaderTest {
     @Test
     void stringToFramesList() {
         assertThat(bowlingLineScoreReaderUnderTest
-                .stringToFramesList(STRING_LINE_12_STRIKES))
+                .stringToFramesList(STRING_LINE_12_STRIKES, frameReader))
                 .isEqualTo(generateFramesList12Strikes());
         assertThat(bowlingLineScoreReaderUnderTest
-                .stringToFramesList(STRING_LINE_10_PAIRS_OF_5_AND_SPARE_WITH_A_FINAL_5))
+                .stringToFramesList(STRING_LINE_10_PAIRS_OF_5_AND_SPARE_WITH_A_FINAL_5, frameReader))
                 .isEqualTo(generateFramesList10PairsOf5AndSpareWithAFinal5());
         assertThat(bowlingLineScoreReaderUnderTest
-                .stringToFramesList(STRING_LINE_10_PAIRS_OF_9_AND_MISS))
+                .stringToFramesList(STRING_LINE_10_PAIRS_OF_9_AND_MISS, frameReader))
                 .isEqualTo(generateFramesList10PairsOf9AndMiss());
     }
 
@@ -81,15 +84,15 @@ class BowlingLineScoreReaderTest {
     @Test
     void takeFinalFrame(){
         assertThat(bowlingLineScoreReaderUnderTest
-                .takeFinalFrame(STRING_ARRAY_12_STRIKES))
+                .takeFinalFrame(STRING_ARRAY_12_STRIKES, frameReader))
                 .isEqualTo(STRIKE_FINAL_FRAME);
 
         assertThat(bowlingLineScoreReaderUnderTest
-                .takeFinalFrame(STRING_ARRAY_10_PAIRS_OF_9_AND_MISS))
+                .takeFinalFrame(STRING_ARRAY_10_PAIRS_OF_9_AND_MISS, frameReader))
                 .isEqualTo(FINAL_NORMAL_FRAME_9_);
 
         assertThat(bowlingLineScoreReaderUnderTest
-                .takeFinalFrame(STRING_ARRAY_10_PAIRS_OF_5_AND_SPARE_WITH_A_FINAL_5))
+                .takeFinalFrame(STRING_ARRAY_10_PAIRS_OF_5_AND_SPARE_WITH_A_FINAL_5, frameReader))
                 .isEqualTo(FINAL_NORMAL_FRAME_5_SPARE_5);
     }
 }
