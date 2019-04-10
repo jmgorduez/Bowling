@@ -82,7 +82,27 @@ class BowlingLineScoreReaderTest {
     }
 
     @Test
-    void takeFinalFrame(){
+    void takeInitFrames12Strike() {
+        List<IFrame> frameList = generateFramesList12Strikes();
+        List<IFrame> initFramesListExpected = frameList.subList(ZERO, NINE);
+        IFrame lastFrame = frameList.get(NINE);
+        assertThat(bowlingLineScoreReaderUnderTest
+                .takeInitFrames(STRING_ARRAY_12_STRIKES, lastFrame, new FrameReader()))
+                .isEqualTo(initFramesListExpected);
+    }
+
+    @Test
+    void takeinitframes10PairsOf9AndMiss() {
+        List<IFrame> frameList = generateFramesList10PairsOf9AndMiss();
+        List<IFrame> initFramesListExpected = frameList.subList(ZERO, NINE);
+        IFrame lastFrame = frameList.get(NINE);
+        assertThat(bowlingLineScoreReaderUnderTest
+                .takeInitFrames(STRING_ARRAY_10_PAIRS_OF_9_AND_MISS, lastFrame, new FrameReader()))
+                .isEqualTo(initFramesListExpected);
+    }
+
+    @Test
+    void takeFinalFrame() {
         assertThat(bowlingLineScoreReaderUnderTest
                 .takeFinalFrame(STRING_ARRAY_12_STRIKES, frameReader))
                 .isEqualTo(STRIKE_FINAL_FRAME);
