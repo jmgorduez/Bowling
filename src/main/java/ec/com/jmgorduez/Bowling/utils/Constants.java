@@ -7,6 +7,7 @@ public class Constants {
 
     public static final String FILE_PATH = "C:\\Users\\JuanMa\\projects\\java\\Bowling\\inputFile\\";
     //public static final String FILE_PATH = "/home/jm/projects/java/Bank-OCR/inputFiles/";
+    public static final String FILE_PATH_MAIN = FILE_PATH + "input.txt";
 
     public static final Integer ONE = 1;
     public static final Integer TWO = 2;
