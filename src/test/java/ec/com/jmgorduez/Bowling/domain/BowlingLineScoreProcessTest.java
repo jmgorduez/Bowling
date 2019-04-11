@@ -3,7 +3,7 @@ package ec.com.jmgorduez.Bowling.domain;
 import ec.com.jmgorduez.Bowling.domain.abstractions.IBowlingLineScore;
 import ec.com.jmgorduez.Bowling.domain.abstractions.IBowlingLineScoreReader;
 import ec.com.jmgorduez.Bowling.domain.abstractions.IFrameReader;
-import ec.com.jmgorduez.Bowling.domain.abstractions.factories.IDependencesFactory;
+import ec.com.jmgorduez.Bowling.domain.abstractions.IDependencesFactory;
 import ec.com.jmgorduez.Bowling.domain.readers.BowlingLineScoreReader;
 import ec.com.jmgorduez.Bowling.domain.readers.FrameReader;
 import ec.com.jmgorduez.Bowling.utils.DependencesFactory;

@@ -1,15 +1,13 @@
 package ec.com.jmgorduez.Bowling;
 
 
-import com.sun.javaws.exceptions.InvalidArgumentException;
 import ec.com.jmgorduez.Bowling.domain.abstractions.IBowlingLineScore;
-import ec.com.jmgorduez.Bowling.domain.abstractions.factories.IDependencesFactory;
+import ec.com.jmgorduez.Bowling.domain.abstractions.IDependencesFactory;
 import ec.com.jmgorduez.Bowling.utils.DependencesFactory;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.io.UncheckedIOException;
 import java.util.Optional;
 
 import static ec.com.jmgorduez.Bowling.utils.Constants.FILE_PATH_MAIN;

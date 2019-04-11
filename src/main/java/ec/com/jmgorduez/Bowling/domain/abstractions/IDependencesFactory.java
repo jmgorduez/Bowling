@@ -1,4 +1,4 @@
-package ec.com.jmgorduez.Bowling.domain.abstractions.factories;
+package ec.com.jmgorduez.Bowling.domain.abstractions;
 
 import ec.com.jmgorduez.Bowling.domain.abstractions.IBowlingLineScoreProcess;
 import ec.com.jmgorduez.Bowling.domain.abstractions.IBowlingLineScoreReader;
