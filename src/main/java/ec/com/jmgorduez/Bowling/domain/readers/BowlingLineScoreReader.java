@@ -26,7 +26,7 @@ public class BowlingLineScoreReader implements IBowlingLineScoreReader {
         validateTheEndToRead(line);
         List<IFrame> frameList = stringToFramesList(line, frameReader);
         IBowlingLineScore bowlingLineScore = new BowlingLineScore();
-        frameList.stream().forEach(frame -> bowlingLineScore.addFrame(frame));
+        frameList.stream().forEach(bowlingLineScore::addFrame);
         return bowlingLineScore;
     }
 

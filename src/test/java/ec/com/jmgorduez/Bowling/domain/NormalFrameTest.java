@@ -10,7 +10,6 @@ import java.util.Optional;
 import static ec.com.jmgorduez.Bowling.dataGenarator.TestDataGenerator.*;
 import static ec.com.jmgorduez.Bowling.utils.Constants.*;
 import static org.assertj.core.api.Assertions.*;
-import static org.mockito.ArgumentMatchers.any;
 
 class NormalFrameTest {
     private NormalFrame normalFrameUnderTest;

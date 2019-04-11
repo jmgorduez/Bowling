@@ -49,7 +49,7 @@ class BowlingLineScoreReaderTest {
         try {
             List<IFrame> frameList = generateFramesList12Strikes();
             BowlingLineScore bowlingLineScoreExpected = new BowlingLineScore();
-            frameList.stream().forEach(frame -> bowlingLineScoreExpected.addFrame(frame));
+            frameList.stream().forEach(bowlingLineScoreExpected::addFrame);
             BowlingLineScore bowlingLineScoreCurrent
                     = (BowlingLineScore) bowlingLineScoreReaderUnderTest.readBowlingLineScore(bufferedReaderMock, frameReader);
             assertThat(bowlingLineScoreCurrent)

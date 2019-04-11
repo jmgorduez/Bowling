@@ -32,7 +32,8 @@ class BowlingLineScoreProcessTest {
     @BeforeEach
     void setUp() {
         factory = new DependencesFactory();
-        bowlingLineScoreProcessUnderTest = (BowlingLineScoreProcess) factory.bowlingLineScoreProcess();
+        bowlingLineScoreProcessUnderTest
+                = (BowlingLineScoreProcess) factory.bowlingLineScoreProcess();
         bowlingLineScoreReader = new BowlingLineScoreReader();
         frameReader = new FrameReader();
         bowlingScoresExpexted = new ArrayList<>();

@@ -19,9 +19,8 @@ public class BowlingLineScoreProcess implements IBowlingLineScoreProcess {
                                         Consumer<Optional<IBowlingLineScore>> writeOutput) {
         try {
             while (true) {
-                writeOutput.accept(
-                        Optional.of(bowlingLineScoreReader.get()
-                                .readBowlingLineScore(bufferedReader, frameReader.get())));
+                writeOutput.accept(Optional.of(bowlingLineScoreReader.get()
+                        .readBowlingLineScore(bufferedReader, frameReader.get())));
             }
         } catch (IOException | UnsupportedOperationException e) {
             writeOutput.accept(Optional.empty());

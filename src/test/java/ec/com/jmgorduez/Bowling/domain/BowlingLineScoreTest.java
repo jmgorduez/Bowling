@@ -44,7 +44,7 @@ class BowlingLineScoreTest {
 
     private void addFrames(List<IFrame> frameList) {
         frameList.stream()
-                .forEach(frame -> bowlingLineScoreUnderTest.addFrame(frame));
+                .forEach(bowlingLineScoreUnderTest::addFrame);
     }
 
     @Test
@@ -81,12 +81,11 @@ class BowlingLineScoreTest {
                 .isFalse();
         assertThat(bowlingLineScoreUnderTest.equals(new BowlingLineScore()))
                 .isTrue();
+
         List<IFrame> frameList = generateFramesList12Strikes();
         BowlingLineScore bowlingLineScoreToCompare = new BowlingLineScore();
-        frameList.stream().forEach(frame -> {
-            bowlingLineScoreUnderTest.addFrame(frame);
-            bowlingLineScoreToCompare.addFrame(frame);
-        });
+        frameList.stream().forEach(bowlingLineScoreUnderTest::addFrame);
+        frameList.stream().forEach(bowlingLineScoreToCompare::addFrame);
         assertThat(bowlingLineScoreUnderTest.equals(bowlingLineScoreToCompare))
                 .isTrue();
         bowlingLineScoreUnderTest.addFrame(STRIKE_FRAME);
