@@ -21,12 +21,19 @@ public class BowlingLineScoreReader implements IBowlingLineScoreReader {
     @Override
     public IBowlingLineScore readBowlingLineScore(BufferedReader bufferedReader,
                                                   IFrameReader frameReader)
-            throws IOException {
+            throws IOException, UnsupportedOperationException {
         String line = bufferedReader.readLine();
+        validateTheEndToRead(line);
         List<IFrame> frameList = stringToFramesList(line, frameReader);
         IBowlingLineScore bowlingLineScore = new BowlingLineScore();
         frameList.stream().forEach(frame -> bowlingLineScore.addFrame(frame));
         return bowlingLineScore;
+    }
+
+    void validateTheEndToRead(String line) {
+        if(line == null){
+            throw new UnsupportedOperationException();
+        }
     }
 
     List<IFrame> stringToFramesList(String line, IFrameReader frameReader) {
