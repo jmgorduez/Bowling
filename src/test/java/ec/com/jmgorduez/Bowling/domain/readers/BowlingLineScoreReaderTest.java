@@ -27,12 +27,13 @@ class BowlingLineScoreReaderTest {
     private BufferedReader bufferedReaderMock;
     @Mock
     private BufferedReader bufferedReaderEmptyLineMock;
-    private IFrameReader frameReader = new FrameReader();
+    private IFrameReader frameReader;
 
     @BeforeEach
     void setUp() {
         MockitoAnnotations.initMocks(this);
         this.bowlingLineScoreReaderUnderTest = new BowlingLineScoreReader();
+        frameReader = new FrameReader();
         try {
             when(bufferedReaderMock.readLine())
                     .thenReturn(STRING_LINE_12_STRIKES);
