@@ -3,15 +3,16 @@ package ec.com.jmgorduez.Bowling.domain;
 import ec.com.jmgorduez.Bowling.domain.abstractions.IBowlingLineScore;
 import ec.com.jmgorduez.Bowling.domain.abstractions.IBowlingLineScoreReader;
 import ec.com.jmgorduez.Bowling.domain.abstractions.IFrameReader;
+import ec.com.jmgorduez.Bowling.domain.abstractions.factories.IDependencesFactory;
 import ec.com.jmgorduez.Bowling.domain.readers.BowlingLineScoreReader;
 import ec.com.jmgorduez.Bowling.domain.readers.FrameReader;
+import ec.com.jmgorduez.Bowling.utils.DependencesFactory;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -19,7 +20,6 @@ import java.util.Optional;
 import static ec.com.jmgorduez.Bowling.dataGenarator.TestDataGenerator.*;
 import static ec.com.jmgorduez.Bowling.utils.Constants.*;
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 class BowlingLineScoreProcessTest {
 
@@ -27,10 +27,12 @@ class BowlingLineScoreProcessTest {
     private IBowlingLineScoreReader bowlingLineScoreReader;
     private IFrameReader frameReader;
     private List<Integer> bowlingScoresExpexted;
+    private IDependencesFactory factory;
 
     @BeforeEach
     void setUp() {
-        bowlingLineScoreProcessUnderTest = new BowlingLineScoreProcess();
+        factory = new DependencesFactory();
+        bowlingLineScoreProcessUnderTest = (BowlingLineScoreProcess) factory.bowlingLineScoreProcess();
         bowlingLineScoreReader = new BowlingLineScoreReader();
         frameReader = new FrameReader();
         bowlingScoresExpexted = new ArrayList<>();
@@ -41,8 +43,8 @@ class BowlingLineScoreProcessTest {
         try {
             bowlingLineScoreProcessUnderTest.processBowlingLineScore(
                     new BufferedReader(new FileReader(FILE_PATH_MAIN)),
-                    bowlingLineScoreReader,
-                    frameReader,
+                    factory::bowlingLineScoreReader,
+                    factory::frameReader,
                     this::writeOutput);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -60,8 +62,8 @@ class BowlingLineScoreProcessTest {
         try {
             bowlingLineScoreProcessUnderTest.processBowlingLineScore(
                     new BufferedReader(new FileReader(EMPTY_FILE_PATH)),
-                    bowlingLineScoreReader,
-                    frameReader,
+                    factory::bowlingLineScoreReader,
+                    factory::frameReader,
                     this::writeOutput);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -71,8 +73,7 @@ class BowlingLineScoreProcessTest {
     }
 
     void writeOutput(Optional<IBowlingLineScore> bowlingLineScore) {
-        if(bowlingLineScore.isPresent()) {
-            bowlingScoresExpexted.add(bowlingLineScore.get().getTotalScore());
-        }
+        bowlingLineScore.ifPresent(bowlingLineScore1 ->
+                bowlingScoresExpexted.add(bowlingLineScore.get().getTotalScore()));
     }
 }
