@@ -16,6 +16,7 @@ import java.util.List;
 import static ec.com.jmgorduez.Bowling.dataGenarator.TestDataGenerator.*;
 import static ec.com.jmgorduez.Bowling.utils.Constants.*;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.mockito.Mockito.when;
 
 @TestInstance(value = TestInstance.Lifecycle.PER_CLASS)
@@ -24,6 +25,8 @@ class BowlingLineScoreReaderTest {
     private BowlingLineScoreReader bowlingLineScoreReaderUnderTest;
     @Mock
     private BufferedReader bufferedReaderMock;
+    @Mock
+    private BufferedReader bufferedReaderEmptyLineMock;
     private IFrameReader frameReader = new FrameReader();
 
     @BeforeEach
@@ -33,6 +36,8 @@ class BowlingLineScoreReaderTest {
         try {
             when(bufferedReaderMock.readLine())
                     .thenReturn(STRING_LINE_12_STRIKES);
+            when(bufferedReaderEmptyLineMock.readLine())
+                    .thenReturn(NULL_STRING_LINE);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -51,6 +56,13 @@ class BowlingLineScoreReaderTest {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    @Test
+    void readEmptyBowlingLineScore() {
+        assertThatThrownBy(() -> bowlingLineScoreReaderUnderTest
+                .readBowlingLineScore(bufferedReaderEmptyLineMock, frameReader))
+                .isInstanceOf(UnsupportedOperationException.class);
     }
 
     @Test
