@@ -29,6 +29,7 @@ public class BowlingApplication {
     }
 
     private static void writeOutput(Optional<IBowlingLineScore> bowlingLineScore) {
-        bowlingLineScore.ifPresent(bowlingScore -> System.out.println(bowlingScore.getTotalScore()));
+        bowlingLineScore.map(bowlingScore -> bowlingScore.getTotalScore())
+                .ifPresent(System.out::println);
     }
 }
