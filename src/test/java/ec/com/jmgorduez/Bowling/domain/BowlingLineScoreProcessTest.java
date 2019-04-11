@@ -75,6 +75,6 @@ class BowlingLineScoreProcessTest {
 
     void writeOutput(Optional<IBowlingLineScore> bowlingLineScore) {
         bowlingLineScore.ifPresent(bowlingLineScore1 ->
-                bowlingScoresExpexted.add(bowlingLineScore.get().getTotalScore()));
+                bowlingScoresExpexted.add(bowlingLineScore1.getTotalScore()));
     }
 }
