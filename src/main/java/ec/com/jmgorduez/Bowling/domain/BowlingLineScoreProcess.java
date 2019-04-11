@@ -22,7 +22,7 @@ public class BowlingLineScoreProcess implements IBowlingLineScoreProcess {
                         Optional.of(bowlingLineScoreReader
                                 .readBowlingLineScore(bufferedReader, frameReader)));
             }
-        } catch (IOException e) {
+        } catch (IOException | UnsupportedOperationException e) {
             writeOutput.accept(Optional.empty());
         }
     }
