@@ -17,6 +17,7 @@ import static org.mockito.ArgumentMatchers.any;
 public class TestDataGenerator {
 
     public static final String FILE_PATH_MAIN = FILE_PATH + "input.txt";
+    public static final String EMPTY_FILE_PATH = FILE_PATH + "emptyInput.txt";
 
     public static final NormalFrame NORMAL_FRAME_4_4 = new NormalFrame(FOUR, FOUR, EMPTY_FRAME);
     public static final NormalFrame NORMAL_FRAME_4_5 = new NormalFrame(FOUR, FIVE, NORMAL_FRAME_4_4);

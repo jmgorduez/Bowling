@@ -55,6 +55,21 @@ class BowlingLineScoreProcessTest {
                 .isEqualTo(TWO);
     }
 
+    @Test
+    void processEmptyBowlingLineScore() {
+        try {
+            bowlingLineScoreProcessUnderTest.processBowlingLineScore(
+                    new BufferedReader(new FileReader(EMPTY_FILE_PATH)),
+                    bowlingLineScoreReader,
+                    frameReader,
+                    this::writeOutput);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        assertThat(bowlingScoresExpexted.isEmpty())
+                .isTrue();
+    }
+
     void writeOutput(Optional<IBowlingLineScore> bowlingLineScore) {
         if(bowlingLineScore.isPresent()) {
             bowlingScoresExpexted.add(bowlingLineScore.get().getTotalScore());
